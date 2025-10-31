@@ -1,0 +1,95 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.loaderMiniContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 130px;
+    height: fit-content;
+}
+
+.barContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bar {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(
+            to right,
+            rgba(59, 130, 246, 0.3),
+            rgba(59, 130, 246, 0.6),
+            rgba(59, 130, 246, 1)
+    );
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: bar ease-in-out 3s infinite alternate-reverse;
+}
+
+@keyframes bar {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
+}
+
+.bar2 {
+    width: 50%;
+}
+
+.svgIcon {
+    position: absolute;
+    left: -25px;
+    margin-top: 18px;
+    z-index: 2;
+    width: 70%;
+    color: rgba(59, 130, 246, 1);
+    animation: search ease-in-out 3s infinite alternate-reverse;
+}
+
+@keyframes search {
+    0% {
+        transform: translateX(0%) rotate(70deg);
+    }
+    100% {
+        transform: translateX(100px) rotate(10deg);
+    }
+}
+
+.svgIcon circle {
+    fill: rgba(59, 130, 246, 0.15);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .bar {
+        background: linear-gradient(
+                to right,
+                rgba(96, 165, 250, 0.3),
+                rgba(96, 165, 250, 0.6),
+                rgba(96, 165, 250, 1)
+        );
+    }
+
+    .svgIcon {
+        color: rgba(96, 165, 250, 1);
+    }
+
+    .svgIcon circle {
+        fill: rgba(96, 165, 250, 0.15);
+    }
+}

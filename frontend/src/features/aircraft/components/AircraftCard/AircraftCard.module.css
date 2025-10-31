@@ -1,0 +1,458 @@
+/* ========== CARD CONTAINER ========== */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    min-height: 520px;
+    background: var(--color-bg-card);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-card);
+}
+
+.card:hover,
+.cardHover {
+    transform: translateY(-8px) scale(1.02);
+    border-width: 2px;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.card:active {
+    transform: translateY(-2px);
+    border-width: 2.5px;
+}
+
+/* ========== SOMBRA FLOTANTE ANIMADA ========== */
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    right: 10%;
+    height: 20px;
+    background: radial-gradient(
+            ellipse at center,
+            var(--color-primary) 0%,
+            transparent 70%
+    );
+    opacity: 0;
+    transform: scaleX(0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.card:hover::after {
+    opacity: 0.15;
+    transform: scaleX(1.2) translateY(4px);
+}
+
+/* ========== IMAGE CONTAINER ========== */
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background: var(--color-accent-lighter);
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: background var(--transition-normal);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-lighter);
+    transition: background var(--transition-normal);
+}
+
+.imagePlaceholder svg {
+    opacity: 0.25;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .imagePlaceholder svg {
+    transform: scale(1.08);
+}
+
+/* ========== CONTENT ========== */
+
+.content {
+    position: relative;
+    padding: 20px 20px 8px;
+    flex-shrink: 0;
+}
+
+.model {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 8px;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    transition: color 0.3s ease;
+}
+
+.card:hover .model {
+    color: var(--color-primary);
+}
+
+.family {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin: 0;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    transition: color var(--transition-normal);
+}
+
+/* ========== SPECIFICATIONS ========== */
+
+.specsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px;
+    flex: 1;
+}
+
+.specItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconContainer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-accent-lighter);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+}
+
+.card:hover .iconContainer {
+    background: var(--color-accent-light);
+    transform: scale(1.05);
+}
+
+.card:hover .icon {
+    color: var(--color-primary);
+}
+
+.specText {
+    flex: 1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.5;
+    transition: color var(--transition-normal);
+}
+
+.specLabel {
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color var(--transition-normal);
+}
+
+.specValue {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    transition: color var(--transition-normal);
+}
+
+/* ========== COMPARE BUTTON ========== */
+
+.compareButton {
+    position: relative;
+    width: calc(100% - 40px);
+    margin: 0 20px 20px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.compareButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.compareButton:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.compareButton:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.compareButton:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   DARK THEME - ESTILO GALAXIA
+======================================== */
+
+[data-theme="dark"] .card {
+    background: linear-gradient(
+            135deg,
+            rgba(30, 41, 59, 0.95) 0%,
+            rgba(30, 41, 59, 0.85) 100%
+    );
+    box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            0 4px 16px rgba(74, 159, 216, 0.15),
+            inset 0 1px 0 rgba(178, 229, 255, 0.1);
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] .cardHover {
+    box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.6),
+            0 12px 32px rgba(74, 159, 216, 0.3),
+            0 6px 16px rgba(74, 159, 216, 0.2),
+            0 0 40px rgba(74, 159, 216, 0.15),
+            inset 0 1px 0 rgba(178, 229, 255, 0.2);
+}
+
+[data-theme="dark"] .card::after {
+    background: radial-gradient(
+            ellipse at center,
+            rgba(74, 159, 216, 0.4) 0%,
+            transparent 70%
+    );
+}
+
+[data-theme="dark"] .card:hover::after {
+    opacity: 0.3;
+}
+
+[data-theme="dark"] .imageContainer,
+[data-theme="dark"] .imagePlaceholder {
+    background: linear-gradient(135deg, rgba(30, 90, 125, 0.4) 0%, rgba(42, 63, 82, 0.3) 100%);
+}
+
+/* ========================================
+   MINIMAL THEME - COLORES NEUTROS ELEGANTES
+======================================== */
+
+[data-theme="minimal"] .card {
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(248, 249, 250, 0.95) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.2);
+}
+
+[data-theme="minimal"] .card:hover,
+[data-theme="minimal"] .cardHover {
+    border-color: var(--color-primary);
+}
+
+[data-theme="minimal"] .card::after {
+    background: radial-gradient(
+            ellipse at center,
+            rgba(90, 108, 125, 0.2) 0%,
+            transparent 70%
+    );
+}
+
+[data-theme="minimal"] .imageContainer,
+[data-theme="minimal"] .imagePlaceholder {
+    background: linear-gradient(135deg, #E8EDF2 0%, #DFE5EB 100%);
+}
+
+/* ========== RESPONSIVE - TABLET ========== */
+
+@media (max-width: 1199px) {
+    .card {
+        width: 320px;
+        min-height: 500px;
+    }
+
+    .imageContainer {
+        height: 220px;
+    }
+
+    .content {
+        padding: 18px 18px 8px;
+    }
+
+    .model {
+        font-size: 19px;
+    }
+
+    .family {
+        font-size: 12px;
+    }
+
+    .specsList {
+        padding: 14px 18px;
+        gap: 11px;
+    }
+
+    .specText {
+        font-size: 12px;
+    }
+
+    .compareButton {
+        width: calc(100% - 36px);
+        margin: 0 18px 18px;
+        padding: 13px 22px;
+        font-size: 14px;
+    }
+}
+
+/* ========== RESPONSIVE - MOBILE ========== */
+
+@media (max-width: 767px) {
+    .card {
+        width: 100%;
+        max-width: 400px;
+        min-height: 480px;
+        margin: 0 auto;
+    }
+
+    .imageContainer {
+        height: 200px;
+    }
+
+    .content {
+        padding: 16px 16px 8px;
+    }
+
+    .model {
+        font-size: 18px;
+    }
+
+    .family {
+        font-size: 12px;
+    }
+
+    .specsList {
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .iconContainer {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .specText {
+        font-size: 12px;
+    }
+
+    .compareButton {
+        width: calc(100% - 32px);
+        margin: 0 16px 16px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ========== EFECTO DE BRILLO SUAVE AL GRID ========== */
+
+@keyframes gridGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(13, 75, 122, 0.03));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(13, 75, 122, 0.06));
+    }
+}
+
+.grid {
+    animation: gridGlow 4s ease-in-out infinite;
+}
+
+/* Dark theme grid glow */
+[data-theme="dark"] .grid {
+    animation: gridGlowDark 4s ease-in-out infinite;
+}
+
+@keyframes gridGlowDark {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(74, 159, 216, 0.1));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(74, 159, 216, 0.15));
+    }
+}
+
+/* Minimal theme - glow más sutil */
+[data-theme="minimal"] .grid {
+    animation: gridGlowMinimal 4s ease-in-out infinite;
+}
+
+@keyframes gridGlowMinimal {
+    0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(90, 108, 125, 0.04));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(90, 108, 125, 0.06));
+    }
+}

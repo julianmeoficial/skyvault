@@ -1,0 +1,230 @@
+.apiPage {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #ffffff;
+
+    /* Performance optimizations */
+    will-change: scroll-position;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ========== FLOATING CONTROLS (REEMPLAZO DEL HEADER) ========== */
+
+.floatingControls {
+    position: fixed;
+    top: 32px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    pointer-events: none; /* No bloquea clicks del contenido */
+
+    /*  Performance */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floatingControls:hover {
+    opacity: 1 !important; /*  Al hover siempre visible */
+}
+
+/* ========== BACK BUTTON WRAPPER ========== */
+
+.backButtonWrapper {
+    pointer-events: auto; /*  Re-habilitar clicks solo en el botón */
+    padding: 12px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+    /* Smooth transitions */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /*  Performance */
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.backButtonWrapper:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.backButtonWrapper:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ========== THEME TOGGLE WRAPPER ========== */
+
+.themeToggleWrapper {
+    pointer-events: auto; /*  Re-habilitar clicks solo en el toggle */
+    padding: 8px 12px;
+    border-radius: 50px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+    /*  Smooth transitions */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /*  Performance */
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.themeToggleWrapper:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.themeToggleWrapper:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ========== CONTENT ========== */
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding-top: 0; /*  Sin espacio para header porque ya no existe */
+
+    /*  Performance */
+    will-change: scroll-position;
+    contain: layout style paint;
+}
+
+/* ========== FOOTER ========== */
+
+.apiPage footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet landscape (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .floatingControls {
+        top: 28px;
+        padding: 0 40px;
+    }
+
+    .backButtonWrapper {
+        padding: 11px 22px;
+    }
+
+    .themeToggleWrapper {
+        padding: 9px 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floatingControls {
+        top: 18px; /* Más arriba */
+        padding: 0 28px; /*  Más padding lateral */
+    }
+
+    .backButtonWrapper {
+        padding: 10px 18px; /*  Más cómodo */
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .themeToggleWrapper {
+        padding: 8px 14px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    }
+}
+
+@media (max-width: 480px) {
+    .floatingControls {
+        top: 12px; /*  Más arriba */
+        padding: 0 12px; /*  Menos padding lateral */
+    }
+
+    .backButtonWrapper {
+        padding: 8px 14px; /*  Más compacto */
+        border-radius: 40px; /*  Menos redondeado */
+        backdrop-filter: blur(12px) saturate(160%); /*  Menos blur */
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); /*  Sombra sutil */
+    }
+
+    .themeToggleWrapper {
+        padding: 6px 10px; /*  Más compacto */
+        border-radius: 40px;
+        backdrop-filter: blur(12px) saturate(160%);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /*  Desactivar hover effects en mobile */
+    .backButtonWrapper:hover,
+    .themeToggleWrapper:hover {
+        transform: none;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Extra small devices (320px - 375px) */
+@media (max-width: 375px) {
+    .floatingControls {
+        top: 10px;
+        padding: 0 10px;
+    }
+
+    .backButtonWrapper {
+        padding: 7px 12px; /*  Aún más compacto */
+        border-radius: 36px;
+    }
+
+    .themeToggleWrapper {
+        padding: 5px 8px;
+        border-radius: 36px;
+    }
+
+    /*  Escalar iconos más pequeños */
+    .backButtonWrapper svg,
+    .themeToggleWrapper svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .floatingControls,
+    .backButtonWrapper,
+    .themeToggleWrapper {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Optimización para pantallas retina */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .backButtonWrapper,
+    .themeToggleWrapper {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+/* Smooth scrolling nativo */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}

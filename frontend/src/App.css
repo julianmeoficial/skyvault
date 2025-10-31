@@ -1,0 +1,13 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Eliminar transiciones en minimal */
+[data-theme="minimal"] .App {
+  transition: none;
+}

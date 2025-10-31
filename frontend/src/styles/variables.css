@@ -1,0 +1,173 @@
+:root {
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+
+    /* Bordes redondeados */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    /* Tipografía */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Transiciones base - se sobrescriben en minimal */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   TEMA LIGHT (DÍA) - Default
+   ============================================ */
+[data-theme="light"],
+:root:not([data-theme]) {
+    /* Paleta principal SkyVault */
+    --color-primary: #0d4b7a;
+    --color-primary-dark: #083554;
+    --color-accent: #0d4b7a;
+    --color-accent-light: #B2E5FF;
+    --color-accent-lighter: #D3E9FF;
+
+    /* Fondos */
+    --color-bg-main: #D3E9FF;
+    --color-bg-white: #ffffff;
+    --color-bg-section: #f8fcff;
+    --color-bg-card: #ffffff;
+    --color-bg-hover: #f0f9ff;
+
+    /* Textos */
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #0d4b7a;
+    --color-text-muted: #6e6e73;
+
+    /* Bordes */
+    --color-border: rgba(13, 75, 122, 0.15);
+    --color-border-light: rgba(13, 75, 122, 0.08);
+    --color-border-strong: rgba(13, 75, 122, 0.3);
+
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(13, 75, 122, 0.06);
+    --shadow-md: 0 4px 16px rgba(13, 75, 122, 0.1);
+    --shadow-lg: 0 8px 32px rgba(13, 75, 122, 0.15);
+    --shadow-card: 0 4px 24px rgba(13, 75, 122, 0.12);
+
+    /* Colores de identificación por avión */
+    --color-aircraft-1: #E3F2FD;
+    --color-aircraft-1-border: #90CAF9;
+    --color-aircraft-2: #FFF3E0;
+    --color-aircraft-2-border: #FFCC80;
+    --color-aircraft-3: #F3E5F5;
+    --color-aircraft-3-border: #CE93D8;
+}
+
+/* ============================================
+   TEMA DARK (NOCHE)
+   ============================================ */
+[data-theme="dark"] {
+    /* Paleta principal adaptada a oscuro */
+    --color-primary: #4A9FD8;
+    --color-primary-dark: #2E7BAF;
+    --color-accent: #4A9FD8;
+    --color-accent-light: #1E5A7D;
+    --color-accent-lighter: #2A3F52;
+
+    /* Fondos oscuros */
+    --color-bg-main: #0A1929;
+    --color-bg-white: #132F4C;
+    --color-bg-section: #1A2332;
+    --color-bg-card: #1E293B;
+    --color-bg-hover: #2A3F52;
+
+    /* Textos invertidos */
+    --color-text-primary: #E3E8EF;
+    --color-text-secondary: #B2E5FF;
+    --color-text-muted: #8B9DAE;
+
+    /* Bordes adaptados */
+    --color-border: rgba(178, 229, 255, 0.15);
+    --color-border-light: rgba(172, 211, 246, 0.4);
+    --color-border-strong: rgba(178, 229, 255, 0.3);
+
+    /* Sombras suaves en oscuro */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35);
+
+    /* Colores de identificación adaptados */
+    --color-aircraft-1: #1E3A5F;
+    --color-aircraft-1-border: #4A7BA7;
+    --color-aircraft-2: #4A3A1E;
+    --color-aircraft-2-border: #A67C52;
+    --color-aircraft-3: #3A2547;
+    --color-aircraft-3-border: #8B63AB;
+}
+
+/* ============================================
+   TEMA MINIMAL (Colores minimalistas elegantes)
+   ============================================ */
+[data-theme="minimal"] {
+    /* Paleta monocromática elegante con buen contraste */
+    --color-primary: #5A6C7D;
+    --color-primary-dark: #3D4E5C;
+    --color-accent: #7B8C9E;
+    --color-accent-light: #B8C5D0;
+    --color-accent-lighter: #E5EAF0;
+
+    /* Fondos neutros cálidos */
+    --color-bg-main: #F8F9FA;
+    --color-bg-white: #FFFFFF;
+    --color-bg-section: #F5F6F8;
+    --color-bg-card: #FFFFFF;
+    --color-bg-hover: #EBEDF1;
+
+    /* Textos en escala de grises con buen contraste */
+    --color-text-primary: #2C3E50;
+    --color-text-secondary: #5A6C7D;
+    --color-text-muted: #7B8C9E;
+
+    /* Bordes minimalistas pero visibles */
+    --color-border: rgba(90, 108, 125, 0.18);
+    --color-border-light: rgba(90, 108, 125, 0.1);
+    --color-border-strong: rgba(90, 108, 125, 0.35);
+
+    /* Sombras sutiles pero presentes */
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-card: 0 3px 16px rgba(0, 0, 0, 0.1);
+
+    /* Colores de identificación con más personalidad */
+    --color-aircraft-1: #E8EDF2;
+    --color-aircraft-1-border: #99A8B5;
+    --color-aircraft-2: #F0F3F6;
+    --color-aircraft-2-border: #B8C5D0;
+    --color-aircraft-3: #DFE5EB;
+    --color-aircraft-3-border: #A3B3C2;
+
+    /* ⚠️ MANTENEMOS TRANSICIONES NORMALES - NO reducir */
+    /* Las transiciones se heredan del :root */
+}
+
+/* ============================================
+   SOPORTE PARA PREFERS-REDUCED-MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

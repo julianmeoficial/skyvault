@@ -1,0 +1,141 @@
+.codeBlock {
+    margin: 0;
+    padding: 24px;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 0 0 16px 16px;
+
+    /* Optimizaciones críticas */
+    contain: content;
+    will-change: scroll-position;
+}
+
+.codeBlock.dark {
+    background: #0a0a0a;
+    color: #e0e0e0;
+}
+
+.codeBlock.light {
+    background: #f8f9fa;
+    color: #1e293b;
+}
+
+.codeBlock.minimal {
+    background: #fafafa;
+    color: #334155;
+}
+
+.code {
+    display: block;
+}
+
+.line {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 2px 0;
+
+    /* Optimización hover */
+    will-change: background-color;
+    transition: background-color 0.2s ease;
+}
+
+.line:hover {
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.lineNumber {
+    min-width: 32px;
+    text-align: right;
+    opacity: 0.4;
+    user-select: none;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.lineContent {
+    flex: 1;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ========== SYNTAX HIGHLIGHTING ========== */
+
+.codeBlock.dark :global(.key) {
+    color: #c4b5fd;
+}
+
+.codeBlock.light :global(.key) {
+    color: #2563eb;
+}
+
+.codeBlock.minimal :global(.key) {
+    color: #475569;
+}
+
+.codeBlock.dark :global(.string) {
+    color: #86efac;
+}
+
+.codeBlock.light :global(.string) {
+    color: #16a34a;
+}
+
+.codeBlock.minimal :global(.string) {
+    color: #059669;
+}
+
+.codeBlock.dark :global(.number) {
+    color: #fbbf24;
+}
+
+.codeBlock.light :global(.number) {
+    color: #d97706;
+}
+
+.codeBlock.minimal :global(.number) {
+    color: #ea580c;
+}
+
+.codeBlock.dark :global(.boolean) {
+    color: #f472b6;
+}
+
+.codeBlock.light :global(.boolean) {
+    color: #db2777;
+}
+
+.codeBlock.minimal :global(.boolean) {
+    color: #be185d;
+}
+
+/* ========== SCROLLBAR OPTIMIZADO ========== */
+
+.codeBlock::-webkit-scrollbar {
+    height: 8px;
+}
+
+.codeBlock::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.codeBlock::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.codeBlock::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.6);
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .line {
+        transition: none !important;
+    }
+}

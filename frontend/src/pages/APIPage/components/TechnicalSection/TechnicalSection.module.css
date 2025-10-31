@@ -1,0 +1,679 @@
+.technical {
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== FONDOS CONTINUOS CON SECCIONES PREVIAS ========== */
+
+.technical.dark {
+    background: #000000;
+    background-image:
+            radial-gradient(ellipse at 35% 50%, rgba(59, 130, 246, 0.09) 0%, transparent 50%),
+            radial-gradient(ellipse at 65% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 30%, rgba(30, 30, 50, 0.06) 0%, transparent 100%);
+}
+
+.technical.light {
+    background: #c9d6df;
+    background-image:
+            radial-gradient(ellipse at 35% 50%, rgba(145, 160, 175, 0.25) 0%, transparent 50%),
+            radial-gradient(ellipse at 65% 70%, rgba(160, 175, 190, 0.2) 0%, transparent 50%);
+}
+
+.technical.minimal {
+    background: #d4d4d4;
+    background-image:
+            radial-gradient(ellipse at 35% 50%, rgba(180, 180, 180, 0.3) 0%, transparent 50%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== STATS GRID OPTIMIZADO ========== */
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-bottom: 96px;
+}
+
+.statCard {
+    padding: 40px 28px;
+    text-align: center;
+    border-radius: 24px;
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 2px solid;
+
+    /* Optimizaciones 120fps */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technical.dark .statCard {
+    background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.12) 0%,
+    rgba(139, 92, 246, 0.08) 100%
+    );
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.technical.light .statCard {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08);
+}
+
+.technical.minimal .statCard {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(232, 237, 242, 0.6) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.25);
+}
+
+.statCard:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+.technical.dark .statCard:hover {
+    box-shadow: 0 24px 64px rgba(59, 130, 246, 0.35);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.technical.light .statCard:hover {
+    box-shadow: 0 24px 64px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.technical.minimal .statCard:hover {
+    box-shadow: 0 24px 64px rgba(90, 108, 125, 0.2);
+    border-color: rgba(90, 108, 125, 0.5);
+}
+
+.statValue {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+}
+
+.counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    will-change: contents;
+    transform: translateZ(0);
+}
+
+.technical.dark .statValue {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* FORZAR que funcione con textContent */
+    display: inline-block;
+    position: relative;
+}
+
+/*  Aplicar el gradiente al counter específicamente */
+.technical.dark .statValue .counter {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+.technical.light .statValue {
+    color: #0d4b7a;
+}
+
+.technical.minimal .statValue {
+    color: #2c3e50;
+}
+
+.statLabel {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.technical.dark .statLabel {
+    color: #ffffff;
+}
+
+.technical.light .statLabel {
+    color: #475569; /* Gris medio oscuro */
+}
+
+.technical.minimal .statLabel {
+    color: #52606d; /* Gris medio oscuro */
+}
+
+/* ========== HEADER ========== */
+
+.header {
+    text-align: center;
+    margin-bottom: 72px;
+}
+
+.sectionTitle {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    will-change: transform, opacity;
+}
+
+.technical.dark .sectionTitle {
+    color: #ffffff;
+}
+
+.technical.light .sectionTitle {
+    color: #0d4b7a;
+}
+
+.technical.minimal .sectionTitle {
+    color: #2c3e50;
+}
+
+.sectionSubtitle {
+    font-size: clamp(17px, 2vw, 21px);
+    opacity: 0.82;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.6;
+    will-change: transform, opacity;
+}
+
+.technical.dark .sectionSubtitle {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.technical.light .sectionSubtitle {
+    color: rgba(13, 75, 122, 0.85);
+}
+
+.technical.minimal .sectionSubtitle {
+    color: #5a6c7d;
+}
+
+/* ========== TECH GRID CON PARALLAX ========== */
+
+.techGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 36px;
+    margin-bottom: 96px;
+}
+
+.techCard {
+    padding: 44px 36px;
+    border-radius: 28px;
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 2px solid;
+
+    /* Optimizaciones 120fps */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technical.dark .techCard {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+.technical.light .techCard {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(13, 75, 122, 0.2);
+    box-shadow: 0 8px 32px rgba(13, 75, 122, 0.06);
+}
+
+.technical.minimal .techCard {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(90, 108, 125, 0.2);
+    box-shadow: 0 8px 32px rgba(90, 108, 125, 0.04);
+}
+
+.techCard:hover {
+    transform: translateY(-10px) translateZ(10px);
+}
+
+.technical.dark .techCard:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 24px 64px rgba(59, 130, 246, 0.3);
+}
+
+.technical.light .techCard:hover {
+    border-color: rgba(13, 75, 122, 0.4);
+    box-shadow: 0 24px 64px rgba(13, 75, 122, 0.18);
+}
+
+.technical.minimal .techCard:hover {
+    border-color: rgba(90, 108, 125, 0.4);
+    box-shadow: 0 24px 64px rgba(90, 108, 125, 0.14);
+}
+
+.techCategory {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+}
+
+.technical.dark .techCategory {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.technical.light .techCategory {
+    color: #0d4b7a;
+    border-color: rgba(13, 75, 122, 0.25);
+}
+
+.technical.minimal .techCategory {
+    color: #2c3e50;
+    border-color: rgba(90, 108, 125, 0.25);
+}
+
+.techList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.techItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.techItem:hover {
+    transform: translateX(6px);
+}
+
+.technical.dark .techItem {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.technical.light .techItem {
+    color: rgba(13, 75, 122, 0.92);
+}
+
+.technical.minimal .techItem {
+    color: #5a6c7d;
+}
+
+.techIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.techItem:hover .techIcon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.technical.dark .techIcon {
+    color: #60a5fa;
+}
+
+.technical.light .techIcon {
+    color: #0d4b7a;
+}
+
+.technical.minimal .techIcon {
+    color: #7b8c9e;
+}
+
+/* ========== ARCHITECTURE DIAGRAM ========== */
+
+.architecture {
+    padding: 72px 56px;
+    border-radius: 32px;
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 2px solid;
+    will-change: transform, opacity;
+}
+
+.technical.dark .architecture {
+    background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.10) 0%,
+    rgba(139, 92, 246, 0.06) 100%
+    );
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.technical.light .architecture {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(178, 229, 255, 0.35) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.3);
+    box-shadow: 0 16px 48px rgba(13, 75, 122, 0.1);
+}
+
+.technical.minimal .architecture {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 237, 242, 0.7) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.3);
+    box-shadow: 0 16px 48px rgba(90, 108, 125, 0.08);
+}
+
+.architectureTitle {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.technical.dark .architectureTitle {
+    color: #ffffff;
+}
+
+.technical.light .architectureTitle {
+    color: #0d4b7a;
+}
+
+.technical.minimal .architectureTitle {
+    color: #2c3e50;
+}
+
+.architectureDiagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.layer {
+    width: 100%;
+}
+
+.layerBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 22px 36px;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid;
+
+    /* Performance */
+    will-change: transform;
+    transform: translateZ(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technical.dark .layerBox {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #93c5fd;
+}
+
+.technical.light .layerBox {
+    background: rgba(13, 75, 122, 0.10);
+    border-color: rgba(13, 75, 122, 0.3);
+    color: #0d4b7a;
+}
+
+.technical.minimal .layerBox {
+    background: rgba(90, 108, 125, 0.10);
+    border-color: rgba(90, 108, 125, 0.3);
+    color: #5a6c7d;
+}
+
+.layerBox:hover {
+    transform: scale(1.04) translateY(-3px);
+}
+
+.technical.dark .layerBox:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.technical.light .layerBox:hover {
+    background: rgba(13, 75, 122, 0.16);
+    border-color: rgba(13, 75, 122, 0.5);
+}
+
+.technical.minimal .layerBox:hover {
+    background: rgba(90, 108, 125, 0.16);
+    border-color: rgba(90, 108, 125, 0.5);
+}
+
+.layerBox.wide {
+    max-width: none;
+}
+
+.layerGroup {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.arrow {
+    font-size: 36px;
+    font-weight: 700;
+    opacity: 0.45;
+}
+
+.technical.dark .arrow {
+    color: #ffffff;
+}
+
+.technical.light .arrow {
+    color: #64748b; /* Gris medio */
+}
+
+.technical.minimal .arrow {
+    color: #6b7280; /* Gris medio */
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+    .techGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .technical {
+        padding: 90px 28px; /*  Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 56px;
+        padding: 0 12px;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px; /*  Más espacio */
+        margin-bottom: 72px; /*  Más separación */
+    }
+
+    .statCard {
+        padding: 36px 24px; /*  Más generoso */
+        border-radius: 22px;
+    }
+
+    .statValue {
+        font-size: clamp(36px, 8vw, 56px); /*  Mejor rango */
+        margin-bottom: 18px;
+    }
+
+    .statLabel {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .header {
+        margin-bottom: 64px; /*  Más espacio */
+    }
+
+    .techGrid {
+        grid-template-columns: 1fr;
+        gap: 32px; /*  Más espacio entre cards */
+        margin-bottom: 72px;
+    }
+
+    .techCard {
+        padding: 40px 32px; /*  Más padding */
+        border-radius: 24px;
+    }
+
+    .techCategory {
+        font-size: 20px; /*  Más pequeño */
+        margin-bottom: 24px;
+        padding-bottom: 18px;
+    }
+
+    .techItem {
+        font-size: 15px; /*  Más legible */
+        gap: 12px;
+    }
+
+    .architecture {
+        padding: 52px 32px; /* Más padding */
+        border-radius: 26px;
+    }
+
+    .architectureTitle {
+        font-size: 26px; /*  Ajustado */
+        margin-bottom: 48px;
+    }
+
+    .layerGroup {
+        grid-template-columns: 1fr;
+        gap: 18px; /*  Más espacio */
+    }
+
+    .layerBox {
+        font-size: 15px; /*  Más legible */
+        padding: 20px 26px; /* Más cómodo */
+    }
+
+    .arrow {
+        font-size: 32px; /*  Más pequeño */
+    }
+}
+
+@media (max-width: 480px) {
+    .technical {
+        padding: 70px 24px; /*  Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 48px;
+        padding: 0 8px;
+    }
+
+    .statsGrid {
+        gap: 18px; /*  Gap optimizado */
+        margin-bottom: 56px;
+    }
+
+    .statCard {
+        padding: 32px 22px; /* Más cómodo */
+    }
+
+    .statValue {
+        font-size: clamp(32px, 9vw, 48px); /*  Rango mejorado */
+        margin-bottom: 16px;
+    }
+
+    .statLabel {
+        font-size: 11px;
+    }
+
+    .techCard {
+        padding: 36px 28px; /*  Más espacio */
+        border-radius: 22px;
+    }
+
+    .techCategory {
+        font-size: 19px;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
+    }
+
+    .techItem {
+        font-size: 14px;
+        gap: 11px;
+    }
+
+    .architecture {
+        padding: 40px 24px; /*  Más cómodo */
+        border-radius: 22px;
+    }
+
+    .architectureTitle {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .layerBox {
+        font-size: 14px; /* Legible */
+        padding: 18px 22px; /*  Más cómodo */
+    }
+
+    .arrow {
+        font-size: 28px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .statCard,
+    .techCard,
+    .layerBox,
+    .techItem {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .statCard,
+    .techCard {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

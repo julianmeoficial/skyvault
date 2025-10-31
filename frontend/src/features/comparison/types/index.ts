@@ -1,0 +1,1 @@
+export type { ComparisonItem, ComparisonState } from './comparison.types';

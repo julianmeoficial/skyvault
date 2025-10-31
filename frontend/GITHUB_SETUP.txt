@@ -1,0 +1,201 @@
+# ═══════════════════════════════════════════════════════════════
+# 🚀 COMANDOS PARA SUBIR SKYVAULT FRONTEND A GITHUB
+# ═══════════════════════════════════════════════════════════════
+
+# ---------------------------------------------------------------
+# PASO 1: NAVEGAR A LA CARPETA DEL PROYECTO
+# ---------------------------------------------------------------
+
+cd C:\Codes\skyvault\frontend
+
+
+# ---------------------------------------------------------------
+# PASO 2: INICIALIZAR REPOSITORIO GIT (si aún no está inicializado)
+# ---------------------------------------------------------------
+
+git init
+
+
+# ---------------------------------------------------------------
+# PASO 3: CONFIGURAR TU USUARIO DE GIT (si no lo has hecho antes)
+# ---------------------------------------------------------------
+
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
+
+# Si quieres configurarlo solo para este proyecto (sin --global):
+git config user.name "Tu Nombre"
+git config user.email "tu-email@ejemplo.com"
+
+
+# ---------------------------------------------------------------
+# PASO 4: VERIFICAR ARCHIVOS A SUBIR
+# ---------------------------------------------------------------
+
+# Ver el estado de los archivos
+git status
+
+# Ver qué archivos se van a ignorar (verificar .gitignore)
+git status --ignored
+
+
+# ---------------------------------------------------------------
+# PASO 5: AGREGAR TODOS LOS ARCHIVOS AL STAGING AREA
+# ---------------------------------------------------------------
+
+git add .
+
+# O agregar archivos específicos:
+# git add src/
+# git add package.json
+# git add README.md
+
+
+# ---------------------------------------------------------------
+# PASO 6: HACER EL PRIMER COMMIT
+# ---------------------------------------------------------------
+
+git commit -m "Initial commit: SkyVault Frontend v1.0
+
+- React 19 + TypeScript + Vite
+- Feature-based architecture
+- Aircraft catalog with filters
+- Comparison system
+- Multi-theme support (Light/Dark/Minimal)
+- Full API integration
+- Responsive design
+- GSAP animations
+- Complete documentation"
+
+
+# ---------------------------------------------------------------
+# PASO 7: RENOMBRAR LA RAMA A 'main'
+# ---------------------------------------------------------------
+
+git branch -M main
+
+
+# ---------------------------------------------------------------
+# PASO 8: CONECTAR CON TU REPOSITORIO DE GITHUB
+# ---------------------------------------------------------------
+
+# REEMPLAZA 'tu-usuario' con tu nombre de usuario de GitHub
+# REEMPLAZA 'skyvault' con el nombre de tu repositorio si es diferente
+
+git remote add origin https://github.com/tu-usuario/skyvault.git
+
+# Verificar que se agregó correctamente
+git remote -v
+
+
+# ---------------------------------------------------------------
+# PASO 9: SUBIR EL CÓDIGO A GITHUB
+# ---------------------------------------------------------------
+
+git push -u origin main
+
+# Si te pide autenticación:
+# - Opción 1: Usa tu Personal Access Token (recomendado)
+# - Opción 2: Usa GitHub CLI (gh auth login)
+
+
+# ═══════════════════════════════════════════════════════════════
+# ✅ COMANDOS ADICIONALES ÚTILES
+# ═══════════════════════════════════════════════════════════════
+
+# Ver el historial de commits
+git log --oneline
+
+# Ver las ramas
+git branch
+
+# Ver el estado actual
+git status
+
+# Ver archivos ignorados
+git status --ignored
+
+# Ver diferencias antes de commit
+git diff
+
+
+# ═══════════════════════════════════════════════════════════════
+# 🔄 COMANDOS PARA FUTURAS ACTUALIZACIONES
+# ═══════════════════════════════════════════════════════════════
+
+# 1. Ver cambios
+git status
+
+# 2. Agregar cambios
+git add .
+
+# 3. Hacer commit
+git commit -m "Descripción del cambio"
+
+# 4. Subir a GitHub
+git push origin main
+
+
+# ═══════════════════════════════════════════════════════════════
+# 🔑 GENERAR PERSONAL ACCESS TOKEN (Si lo necesitas)
+# ═══════════════════════════════════════════════════════════════
+
+# 1. Ve a: https://github.com/settings/tokens
+# 2. Click en "Generate new token (classic)"
+# 3. Selecciona permisos: repo, workflow, write:packages
+# 4. Genera el token y guárdalo
+# 5. Úsalo como contraseña cuando Git te lo pida
+
+
+# ═══════════════════════════════════════════════════════════════
+# 🚨 SI TIENES ERRORES
+# ═══════════════════════════════════════════════════════════════
+
+# Error: remote origin already exists
+git remote remove origin
+git remote add origin https://github.com/tu-usuario/skyvault.git
+
+# Error: failed to push some refs
+git pull origin main --rebase
+git push origin main
+
+# Error: authentication failed
+# Usa Personal Access Token en lugar de contraseña
+
+
+# ═══════════════════════════════════════════════════════════════
+# 📝 NOTAS IMPORTANTES
+# ═══════════════════════════════════════════════════════════════
+
+# ✅ Archivos que SÍ se subirán:
+# - Todo el código fuente (src/)
+# - package.json y package-lock.json
+# - README.md y documentación
+# - Configuraciones (vite.config.ts, tsconfig.json)
+# - .gitignore
+# - .env.example (plantilla)
+
+# ❌ Archivos que NO se subirán (por .gitignore):
+# - node_modules/
+# - dist/
+# - .env (variables de entorno reales)
+# - logs/
+# - archivos de editores (.vscode/, .idea/)
+
+
+# ═══════════════════════════════════════════════════════════════
+# 🎯 RESUMEN RÁPIDO (COPY-PASTE COMPLETO)
+# ═══════════════════════════════════════════════════════════════
+
+cd C:\Codes\skyvault\frontend
+git init
+git add .
+git commit -m "Initial commit: SkyVault Frontend v1.0"
+git branch -M main
+git remote add origin https://github.com/tu-usuario/skyvault.git
+git push -u origin main
+
+
+# ═══════════════════════════════════════════════════════════════
+# ✨ ¡LISTO! TU PROYECTO ESTÁ EN GITHUB
+# ═══════════════════════════════════════════════════════════════

@@ -1,0 +1,313 @@
+.hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+}
+
+.heroContent {
+    text-align: center;
+    z-index: 2;
+    padding: 0 48px;
+}
+
+.title {
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+[data-theme="minimal"] .title {
+    color: #1a1a1a;
+}
+
+.subtitle {
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 24px;
+    max-width: 700px;
+}
+
+[data-theme="minimal"] .subtitle {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.scrollIndicator {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    will-change: transform;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 13px;
+    position: relative;
+}
+
+[data-theme="minimal"] .mouse {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s infinite;
+}
+
+[data-theme="minimal"] .wheel {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes scroll {
+    0% { opacity: 1; top: 8px; }
+    100% { opacity: 0; top: 24px; }
+}
+
+.scrollText {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+[data-theme="minimal"] .scrollText {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.backgroundGrid {
+    position: absolute;
+    inset: 0;
+    background-image:
+            linear-gradient(rgba(66, 165, 245, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(66, 165, 245, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: gridMove 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(100px, 100px); }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET LANDSCAPE (1024px - 769px)
+   ============================================ */
+@media (max-width: 1024px) {
+    .heroContent {
+        padding: 0 40px;
+    }
+
+    .title {
+        font-size: clamp(44px, 7vw, 100px);
+    }
+
+    .subtitle {
+        font-size: clamp(16px, 2vw, 24px);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET PORTRAIT (768px - 481px)
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 90vh;
+        padding: 80px 0;
+    }
+
+    .heroContent {
+        padding: 40px 28px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: clamp(32px, 5.5vw, 56px);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+    }
+
+    .subtitle {
+        font-size: clamp(14px, 1.8vw, 18px);
+        line-height: 1.5;
+        margin-top: 16px;
+    }
+
+    .scrollIndicator {
+        bottom: 36px;
+        transform: translateX(-50%) scale(0.9);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE (480px - 381px)
+   ============================================ */
+@media (max-width: 480px) {
+    .hero {
+        height: auto;
+        min-height: 80vh;
+        padding: 60px 0;
+    }
+
+    .heroContent {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: clamp(28px, 4.8vw, 40px);
+        line-height: 1.2;
+        letter-spacing: -0.015em;
+        margin-bottom: 16px;
+    }
+
+    .subtitle {
+        font-size: clamp(13px, 1.5vw, 15px);
+        line-height: 1.4;
+        margin-top: 14px;
+        max-width: 100%;
+    }
+
+    .mouse {
+        width: 22px;
+        height: 36px;
+        border-width: 1.5px;
+    }
+
+    .wheel {
+        width: 3px;
+        height: 6px;
+    }
+
+    .scrollText {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+    }
+
+    .scrollIndicator {
+        bottom: 28px;
+        transform: translateX(-50%) scale(0.8);
+        gap: 10px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE PEQUEÑO (380px - 320px)
+   ============================================ */
+@media (max-width: 380px) {
+    .hero {
+        min-height: 75vh;
+        padding: 50px 0;
+    }
+
+    .heroContent {
+        padding: 35px 16px;
+    }
+
+    .title {
+        font-size: clamp(24px, 4.5vw, 36px);
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    .subtitle {
+        font-size: clamp(12px, 1.3vw, 13px);
+        line-height: 1.35;
+        margin-top: 12px;
+    }
+
+    .mouse {
+        width: 20px;
+        height: 32px;
+    }
+
+    .wheel {
+        width: 2.5px;
+        height: 5px;
+    }
+
+    .scrollText {
+        font-size: 9px;
+    }
+
+    .scrollIndicator {
+        bottom: 24px;
+        transform: translateX(-50%) scale(0.75);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - ULTRA MOBILE (320px)
+   ============================================ */
+@media (max-width: 320px) {
+    .heroContent {
+        padding: 32px 14px;
+    }
+
+    .title {
+        font-size: clamp(22px, 4vw, 32px);
+        line-height: 1.3;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        line-height: 1.35;
+        margin-top: 10px;
+    }
+
+    .scrollIndicator {
+        bottom: 20px;
+        transform: translateX(-50%) scale(0.7);
+    }
+}
+
+/* ============================================
+   PREFERS REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .wheel {
+        animation: none;
+    }
+
+    .backgroundGrid {
+        animation: none;
+    }
+
+    .scrollIndicator {
+        animation: none;
+    }
+}

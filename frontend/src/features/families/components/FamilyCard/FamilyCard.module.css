@@ -1,0 +1,496 @@
+/* ============================================
+   CARD CONTAINER
+   ============================================ */
+.card {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    will-change: transform;
+    transform: translateZ(0);
+    cursor: pointer;
+}
+
+[data-theme='light'] .card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .card {
+    background: linear-gradient(135deg, #1a1d24 0%, #0f1419 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   BACKGROUND GRADIENT
+   ============================================ */
+.bgGradient {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+            circle,
+            rgba(59, 159, 255, 0.08) 0%,
+            transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    --color-image-bg: #f0f4f8;
+    --color-card-bg: #ffffff;
+    --color-card-border: rgba(0, 0, 0, 0.06);
+    --color-text-primary: #333333;
+    --color-text-secondary: #666666;
+    --color-primary: #0066ff;
+    --color-border: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] {
+    --color-image-bg: #151821;
+    --color-card-bg: #1a1d24;
+    --color-card-border: rgba(255, 255, 255, 0.08);
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #aaaaaa;
+    --color-primary: #3b9fff;
+    --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   IMAGE SECTION
+   ============================================ */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background: var(--color-image-bg);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme='light'] .imageContainer {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8ecf1 100%);
+}
+
+[data-theme='dark'] .imageContainer {
+    background: linear-gradient(135deg, #151821 0%, #0d1117 100%);
+}
+
+/* 🔧 CAMBIO: object-fit contain para mostrar imagen completa */
+.familyImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.manufacturerLogo {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+    border-radius: 6px;
+    z-index: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .manufacturerLogo {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+            135deg,
+            rgba(59, 159, 255, 0.05) 0%,
+            rgba(59, 159, 255, 0.02) 100%
+    );
+    pointer-events: none;
+}
+
+/* ============================================
+   CONTENT SECTION
+   ============================================ */
+.content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 12px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.headerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.familyName {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-text-primary);
+    letter-spacing: -0.3px;
+    word-break: break-word;
+}
+
+.manufacturer {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.narrowBody {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+}
+
+.wideBody {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    color: #7b1fa2;
+}
+
+.jumbo {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    color: #e65100;
+}
+
+[data-theme='dark'] .narrowBody {
+    background: rgba(59, 159, 255, 0.15);
+    color: #5fb3ff;
+}
+
+[data-theme='dark'] .wideBody {
+    background: rgba(156, 39, 176, 0.15);
+    color: #c77dff;
+}
+
+[data-theme='dark'] .jumbo {
+    background: rgba(255, 111, 0, 0.15);
+    color: #ffb74d;
+}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+.description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ============================================
+   STATUS CONTAINER
+   ============================================ */
+.statusContainer {
+    display: flex;
+    align-items: center;
+}
+
+.statusBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.statusIcon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.statusText {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================
+   META INFORMATION
+   ============================================ */
+.meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.metaLabel {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metaValue {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+    .content {
+        padding: 18px;
+        gap: 10px;
+    }
+
+    .familyName {
+        font-size: 20px;
+    }
+
+    .meta {
+        gap: 10px;
+    }
+
+    .manufacturerLogo {
+        width: 36px;
+        height: 36px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .badge {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+    .card {
+        border-radius: 10px;
+    }
+
+    .imageContainer {
+        padding-top: 50%; /* 2:1 aspect ratio en móvil */
+    }
+
+    .content {
+        padding: 16px;
+        gap: 8px;
+    }
+
+    .header {
+        gap: 8px;
+    }
+
+    .familyName {
+        font-size: 16px;
+    }
+
+    .manufacturer {
+        font-size: 10px;
+    }
+
+    .badge {
+        padding: 4px 8px;
+        font-size: 9px;
+    }
+
+    .description {
+        font-size: 12px;
+        -webkit-line-clamp: 1;
+    }
+
+    .statusBadge {
+        padding: 5px 8px;
+    }
+
+    .statusIcon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .statusText {
+        font-size: 10px;
+    }
+
+    .meta {
+        gap: 8px;
+        padding: 10px 0;
+        margin-top: auto;
+    }
+
+    .metaLabel {
+        font-size: 10px;
+    }
+
+    .metaValue {
+        font-size: 13px;
+    }
+
+    .manufacturerLogo {
+        width: 32px;
+        height: 32px;
+        bottom: 8px;
+        right: 8px;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    .imageContainer {
+        padding-top: 45%; /* Aún más corta en móviles pequeños */
+    }
+
+    .content {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .familyName {
+        font-size: 14px;
+    }
+
+    .manufacturer {
+        font-size: 9px;
+    }
+
+    .badge {
+        padding: 3px 6px;
+        font-size: 8px;
+    }
+
+    .description {
+        font-size: 11px;
+        -webkit-line-clamp: 1;
+    }
+
+    .statusBadge {
+        padding: 4px 6px;
+    }
+
+    .statusIcon {
+        width: 11px;
+        height: 11px;
+    }
+
+    .statusText {
+        font-size: 9px;
+    }
+
+    .meta {
+        gap: 6px;
+        padding: 8px 0;
+    }
+
+    .metaLabel {
+        font-size: 9px;
+    }
+
+    .metaValue {
+        font-size: 12px;
+    }
+
+    .manufacturerLogo {
+        width: 28px;
+        height: 28px;
+        bottom: 6px;
+        right: 6px;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .familyImage,
+    .badge,
+    .manufacturerLogo {
+        transition: none;
+    }
+
+    .badge {
+        transform: none;
+    }
+}

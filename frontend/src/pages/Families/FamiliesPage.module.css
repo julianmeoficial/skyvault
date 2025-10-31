@@ -1,0 +1,15 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-background);
+}
+
+.page > * {
+    flex-shrink: 0;
+}
+
+/* Garantizar que el footer esté al final */
+.page > :last-child {
+    margin-top: auto;
+}

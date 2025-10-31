@@ -1,0 +1,275 @@
+.featuredCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    /* Glassmorphism premium */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    box-shadow: 0 8px 32px rgba(13, 75, 122, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    font-family: var(--font-primary);
+}
+
+[data-theme="dark"] .featuredCard {
+    background: rgba(19, 47, 76, 0.5);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(178, 229, 255, 0.15);
+}
+
+[data-theme="minimal"] .featuredCard {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(90, 108, 125, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.featuredCard:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 16px 48px rgba(13, 75, 122, 0.25),
+    0 0 0 3px var(--color-primary),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.imageSection {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: var(--color-bg-section);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.featuredCard:hover .image {
+    transform: scale(1.06) rotate(1deg);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(13, 75, 122, 0.6) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+}
+
+.featuredBadge {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    z-index: 2;
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 24px rgba(255, 215, 0, 0.7);
+    }
+}
+
+.starIcon {
+    width: 16px;
+    height: 16px;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.contentSection {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.categoryBadge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(13, 75, 122, 0.1);
+    color: var(--color-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(13, 75, 122, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+.date {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+}
+
+.title {
+    font-size: 1.625rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.excerpt {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.paragraph {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 4px var(--spacing-sm);
+    background: rgba(13, 75, 122, 0.08);
+    color: var(--color-text-secondary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(13, 75, 122, 0.12);
+    backdrop-filter: blur(4px);
+}
+
+.readFullButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-bold);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    align-self: flex-start;
+    box-shadow: 0 4px 16px rgba(13, 75, 122, 0.3);
+    font-family: var(--font-primary);
+}
+
+.readFullButton:hover {
+    transform: translateX(8px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(13, 75, 122, 0.4);
+    background: var(--color-primary-dark);
+}
+
+.buttonIcon {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-normal);
+}
+
+.readFullButton:hover .buttonIcon {
+    transform: translateX(4px);
+}
+
+.glowEffect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    pointer-events: none;
+}
+
+.featuredCard:hover .glowEffect {
+    opacity: 0.04;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .imageSection {
+        height: 280px;
+    }
+
+    .contentSection {
+        padding: var(--spacing-lg) var(--spacing-xl);
+        gap: var(--spacing-sm);
+    }
+
+    .title {
+        font-size: 1.375rem;
+    }
+
+    .paragraph {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .imageSection {
+        height: 240px;
+    }
+
+    .featuredBadge {
+        font-size: 0.625rem;
+        padding: 6px var(--spacing-md);
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+
+    .contentSection {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}

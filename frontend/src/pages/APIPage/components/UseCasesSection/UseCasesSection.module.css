@@ -1,0 +1,482 @@
+.useCases {
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== FONDOS ESPACIALES ESTILO APPLE (MEJORADO) ========== */
+
+.useCases.dark {
+    background: #000000;
+    background-image:
+            radial-gradient(ellipse at 40% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+            radial-gradient(ellipse at 60% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(30, 30, 50, 0.08) 0%, transparent 100%);
+}
+
+.useCases.light {
+    background: #c9d6df;
+    background-image:
+            radial-gradient(ellipse at 40% 50%, rgba(145, 160, 175, 0.25) 0%, transparent 50%),
+            radial-gradient(ellipse at 60% 70%, rgba(160, 175, 190, 0.2) 0%, transparent 50%);
+}
+
+.useCases.minimal {
+    background: #d4d4d4;
+    background-image:
+            radial-gradient(ellipse at 40% 50%, rgba(180, 180, 180, 0.3) 0%, transparent 50%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== TÍTULOS CON OPTIMIZACIÓN ========== */
+
+.sectionTitle {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    will-change: transform, opacity;
+}
+
+.useCases.dark .sectionTitle {
+    color: #ffffff;
+}
+
+.useCases.light .sectionTitle {
+    color: #0d4b7a;
+}
+
+.useCases.minimal .sectionTitle {
+    color: #2c3e50;
+}
+
+.sectionSubtitle {
+    font-size: clamp(16px, 2vw, 20px);
+    text-align: center;
+    margin-bottom: 80px;
+    opacity: 0.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    will-change: transform, opacity;
+}
+
+.useCases.dark .sectionSubtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.useCases.light .sectionSubtitle {
+    color: rgba(13, 75, 122, 0.8);
+}
+
+.useCases.minimal .sectionSubtitle {
+    color: #5a6c7d;
+}
+
+/* ========== GRID ========== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
+    perspective: 2000px;
+}
+
+/* ========== CARDS CON TUS ANIMACIONES MANTENIDAS + OPTIMIZADAS ========== */
+
+.useCaseCard {
+    padding: 48px 40px;
+    border-radius: 32px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 2px solid;
+
+    /* Optimizaciones críticas 120fps */
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    contain: layout style paint;
+
+    /* Transición mantenida pero optimizada */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gradientes mejorados estilo Apple */
+.useCases.dark .useCaseCard {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.12) 0%,
+    rgba(59, 130, 246, 0.08) 100%
+    );
+    border-color: rgba(139, 92, 246, 0.25);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+}
+
+.useCases.light .useCaseCard {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(178, 229, 255, 0.2) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.2);
+    box-shadow: 0 8px 32px rgba(13, 75, 122, 0.08);
+}
+
+.useCases.minimal .useCaseCard {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(232, 237, 242, 0.4) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.2);
+    box-shadow: 0 8px 32px rgba(90, 108, 125, 0.06);
+}
+
+/* TU HOVER MANTENIDO - Solo optimizado */
+.useCaseCard:hover {
+    transform: translateY(-12px) translateZ(20px);
+}
+
+.useCases.dark .useCaseCard:hover {
+    box-shadow: 0 30px 80px rgba(139, 92, 246, 0.35);
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+.useCases.light .useCaseCard:hover {
+    box-shadow: 0 30px 80px rgba(13, 75, 122, 0.2);
+    border-color: rgba(13, 75, 122, 0.4);
+}
+
+.useCases.minimal .useCaseCard:hover {
+    box-shadow: 0 30px 80px rgba(90, 108, 125, 0.15);
+    border-color: rgba(90, 108, 125, 0.4);
+}
+
+/* ========== ICON WRAPPER ========== */
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.useCaseCard:hover .iconWrapper {
+    transform: scale(1.08) translateZ(10px);
+}
+
+.useCases.dark .iconWrapper {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.25) 0%,
+    rgba(99, 102, 241, 0.15) 100%
+    );
+    color: #c4b5fd;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+}
+
+.useCases.light .iconWrapper {
+    background: linear-gradient(135deg,
+    rgba(13, 75, 122, 0.12) 0%,
+    rgba(74, 159, 216, 0.12) 100%
+    );
+    color: #0d4b7a;
+    box-shadow: 0 4px 16px rgba(13, 75, 122, 0.08);
+}
+
+.useCases.minimal .iconWrapper {
+    background: linear-gradient(135deg,
+    rgba(90, 108, 125, 0.12) 0%,
+    rgba(123, 140, 158, 0.08) 100%
+    );
+    color: #5a6c7d;
+    box-shadow: 0 4px 16px rgba(90, 108, 125, 0.08);
+}
+
+/* ========== TEXTOS ========== */
+
+.cardTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    transform: translateZ(5px);
+}
+
+.useCases.dark .cardTitle {
+    color: #ffffff;
+}
+
+.useCases.light .cardTitle {
+    color: #0d4b7a;
+}
+
+.useCases.minimal .cardTitle {
+    color: #2c3e50;
+}
+
+.cardDescription {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    opacity: 0.85;
+    transform: translateZ(3px);
+}
+
+.useCases.dark .cardDescription {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.useCases.light .cardDescription {
+    color: rgba(13, 75, 122, 0.85);
+}
+
+.useCases.minimal .cardDescription {
+    color: #5a6c7d;
+}
+
+/* ========== BENEFITS LIST ========== */
+
+.benefitsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transform: translateZ(2px);
+}
+
+.benefitItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.useCaseCard:hover .benefitItem {
+    transform: translateX(4px);
+}
+
+.useCases.dark .benefitItem {
+    color: #e0e7ff;
+}
+
+.useCases.light .benefitItem {
+    color: #0d4b7a;
+}
+
+.useCases.minimal .benefitItem {
+    color: #2c3e50;
+}
+
+.benefitItem svg {
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.useCaseCard:hover .benefitItem svg {
+    transform: scale(1.15);
+}
+
+.useCases.dark .benefitItem svg {
+    color: #a78bfa;
+}
+
+.useCases.light .benefitItem svg {
+    color: #4a9fd8;
+}
+
+.useCases.minimal .benefitItem svg {
+    color: #7b8c9e;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Large tablets / Small desktop (1025px - 1280px) */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .useCases {
+        padding: 100px 48px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /*  SIEMPRE 3 columnas */
+        gap: 32px; /*  Gap reducido para que quepan */
+    }
+
+    .useCaseCard {
+        padding: 40px 32px; /*  Padding ajustado */
+    }
+
+    .iconWrapper {
+        width: 72px;
+        height: 72px;
+    }
+
+    .cardTitle {
+        font-size: 24px; /*  Título más pequeño */
+    }
+
+    .cardDescription {
+        font-size: 15px; /* Descripción compacta */
+    }
+}
+
+/* Tablet landscape (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .useCases {
+        padding: 90px 40px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /*  SIEMPRE 3 columnas */
+        gap: 28px; /*  Gap más reducido */
+    }
+
+    .useCaseCard {
+        padding: 36px 28px; /*  Más compacto */
+        border-radius: 28px;
+    }
+
+    .iconWrapper {
+        width: 68px; /*  Icono más pequeño */
+        height: 68px;
+        margin-bottom: 20px;
+    }
+
+    .cardTitle {
+        font-size: 22px; /*  Título compacto */
+        margin-bottom: 14px;
+    }
+
+    .cardDescription {
+        font-size: 14px; /*  Texto más pequeño */
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .benefitItem {
+        font-size: 13px; /*  Items compactos */
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .useCases {
+        padding: 90px 28px; /*  Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 56px; /*  Más espacio */
+        padding: 0 12px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 36px; /*  Más espacio entre cards */
+    }
+
+    .useCaseCard {
+        padding: 40px 32px; /*  Más generoso */
+        border-radius: 28px; /* Mantener elegancia */
+    }
+
+    /* Desactivar 3D en móvil para performance */
+    .useCaseCard {
+        transform-style: flat !important;
+    }
+
+    .useCaseCard:hover {
+        transform: translateY(-8px); /* Hover simplificado */
+    }
+
+    .iconWrapper {
+        width: 76px; /*  Tamaño intermedio */
+        height: 76px;
+        margin-bottom: 24px;
+    }
+
+    .cardTitle {
+        font-size: 26px; /* Mejor tamaño */
+        margin-bottom: 18px;
+    }
+
+    .cardDescription {
+        font-size: 16px; /*  Más legible */
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .useCases {
+        padding: 70px 24px; /*  Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 48px;
+        padding: 0 8px;
+    }
+
+    .grid {
+        gap: 28px; /*  Gap optimizado */
+    }
+
+    .useCaseCard {
+        padding: 36px 28px; /*  Cómodo pero compacto */
+        border-radius: 24px;
+    }
+
+    .iconWrapper {
+        width: 70px; /*  Tamaño óptimo */
+        height: 70px;
+        margin-bottom: 22px;
+    }
+
+    .cardTitle {
+        font-size: 23px; /*  Legible */
+        margin-bottom: 16px;
+    }
+
+    .cardDescription {
+        font-size: 15px; /*  Buen tamaño */
+        line-height: 1.6;
+        margin-bottom: 22px;
+    }
+
+    .benefitItem {
+        font-size: 14px; /*  Reducido pero legible */
+        gap: 10px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .useCaseCard,
+    .iconWrapper,
+    .benefitItem,
+    .benefitItem svg {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .useCaseCard {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

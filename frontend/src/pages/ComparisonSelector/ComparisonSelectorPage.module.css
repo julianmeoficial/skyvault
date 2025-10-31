@@ -1,0 +1,504 @@
+.pageContainer {
+    min-height: 100vh;
+    position: relative;
+    background-image: url('/assets/images/backgrounds/nubebg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 70px 24px 0 24px; /* EXPLÍCITAMENTE: top right bottom left */
+    opacity: 0;
+
+    /* FLEX PARA EMPUJAR EL FOOTER AL FONDO */
+    display: flex;
+    flex-direction: column;
+}
+
+.backgroundOverlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(211, 233, 255, 0.92) 0%,
+            rgba(255, 255, 255, 0.88) 50%,
+            rgba(211, 233, 255, 0.9) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contentWrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* OCUPA TODO EL ESPACIO DISPONIBLE, EMPUJA FOOTER AL FONDO */
+    flex: 1 0 auto; /* flex-grow, flex-shrink, flex-basis */
+}
+
+/* ========== HEADER ========== */
+
+.pageHeader {
+    text-align: center;
+    margin-bottom: 40px; /* ⭐ Reducido de 56px a 40px */
+}
+
+.title {
+    font-size: 56px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: 16px; /* ⭐ Reducido de 20px a 16px */
+    font-family: var(--font-primary);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: var(--color-text-secondary);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: var(--font-weight-normal);
+}
+
+.subtitle strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}
+
+/* ========== SELECTORS CONTAINER (CENTRADO PERMANENTE) ========== */
+
+.selectorsContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* ⭐ Ancho máximo fijo */
+    margin: 0 auto 24px; /* ⭐ Reducido de 48px a 24px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========== SELECTORS GRID (SIEMPRE CENTRADO) ========== */
+
+.selectorsGrid {
+    display: flex;
+    gap: 28px; /* ⭐ Reducido de 32px a 28px */
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: fit-content; /* ⭐ Se ajusta al contenido */
+    margin: 0 auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* ⭐ Transición suave */
+}
+
+/* ========== BOTÓN CIRCULAR FLOTANTE (POSICIONADO ABSOLUTO) ========== */
+
+.addCircleButton {
+    position: absolute;
+    right: -90px; /* ⭐ Ajustado para mejor posición */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(
+            135deg,
+            var(--color-accent) 0%,
+            var(--color-primary) 100%
+    );
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow:
+            0 8px 24px rgba(13, 75, 122, 0.25),
+            0 4px 12px rgba(13, 75, 122, 0.15);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    animation: pulseFloat 2.5s ease-in-out infinite;
+}
+
+.addCircleButton:hover {
+    transform: translateY(-50%) scale(1.12);
+    box-shadow:
+            0 12px 32px rgba(13, 75, 122, 0.35),
+            0 6px 16px rgba(13, 75, 122, 0.25);
+    background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-primary-dark) 100%
+    );
+}
+
+.addCircleButton:active {
+    transform: translateY(-50%) scale(0.98);
+}
+
+.addCircleButton svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.addCircleButton:hover svg {
+    transform: rotate(90deg);
+}
+
+@keyframes pulseFloat {
+    0%, 100% {
+        box-shadow:
+                0 8px 24px rgba(13, 75, 122, 0.25),
+                0 4px 12px rgba(13, 75, 122, 0.15);
+    }
+    50% {
+        box-shadow:
+                0 12px 32px rgba(13, 75, 122, 0.35),
+                0 6px 20px rgba(13, 75, 122, 0.25);
+    }
+}
+
+/* ========== ACTIONS (MÁS CERCA DEL GRID) ========== */
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* ⭐ Reducido de 24px a 20px */
+    margin-top: 24px; /* ⭐ Reducido de 48px a 24px */
+}
+
+.actionsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compareButton {
+    min-width: 280px;
+    padding: 14px 32px; /* ⭐ Más compacto */
+}
+
+/* ========== PROGRESS INDICATOR ========== */
+
+.progressIndicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.progressDots {
+    display: flex;
+    gap: 10px;
+}
+
+.progressDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(13, 75, 122, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progressDot.active {
+    background: var(--color-primary);
+    box-shadow: 0 0 12px rgba(13, 75, 122, 0.6);
+    transform: scale(1.4);
+}
+
+.progressText {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ========== LOADING STATE ========== */
+
+.loadingContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/images/backgrounds/nubebg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.loadingContainer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(211, 233, 255, 0.9);
+}
+
+.loaderWrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.loader {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loaderPlane {
+    color: var(--color-primary);
+    animation: fly 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: var(--shadow-lg), 0 0 0 0 rgba(13, 75, 122, 0.4);
+    }
+    50% {
+        box-shadow: var(--shadow-lg), 0 0 0 20px rgba(13, 75, 122, 0);
+    }
+}
+
+@keyframes fly {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+    75% {
+        transform: translateY(10px) rotate(5deg);
+    }
+}
+
+.loadingText {
+    font-size: 19px;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ========== ERROR STATE ========== */
+
+.errorContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/images/backgrounds/nubebg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 24px;
+}
+
+.errorContainer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(211, 233, 255, 0.9);
+}
+
+.errorContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 480px;
+    padding: 44px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.errorIcon {
+    color: #BF2C23;
+}
+
+.errorTitle {
+    font-size: 26px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.errorMessage {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (min-width: 1400px) {
+    .selectorsGrid {
+        max-width: 1150px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .addCircleButton {
+        right: -80px;
+        width: 62px;
+        height: 62px;
+    }
+
+    .addCircleButton svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .selectorsContainer {
+        margin-bottom: 60px;
+    }
+
+    .addCircleButton {
+        position: static;
+        transform: none;
+        margin: 24px auto 0;
+    }
+
+    .addCircleButton:hover {
+        transform: scale(1.12);
+    }
+
+    .addCircleButton:active {
+        transform: scale(0.98);
+    }
+}
+
+@media (max-width: 768px) {
+    .pageContainer {
+        padding: 60px 16px 0 16px; /* Sin padding inferior */
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .selectorsGrid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .addCircleButton {
+        width: 54px;
+        height: 54px;
+        margin-top: 20px;
+    }
+
+    .addCircleButton svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .compareButton {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .errorContent {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageContainer {
+        padding: 50px 12px 0 12px; /* Sin padding inferior */
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .pageHeader {
+        margin-bottom: 32px;
+    }
+
+    .selectorsGrid {
+        gap: 16px;
+    }
+
+    .loaderWrapper {
+        gap: 24px;
+    }
+
+    .loader {
+        width: 95px;
+        height: 95px;
+    }
+
+    .loadingText {
+        font-size: 17px;
+    }
+
+    .actions {
+        margin-top: 20px;
+    }
+}
+
+/* ========== BACK BUTTON STYLING ========== */
+
+.contentWrapper > :global(.backButton) {
+    align-self: flex-start; /* ✅ Alinea a la izquierda (no centrado) */
+    margin-bottom: var(--spacing-xl);
+    margin-left: 0;
+    animation: slideInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.3s; /* ✅ Aparece después del fade in */
+    opacity: 0; /* ✅ Empieza invisible para la animación */
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========== RESPONSIVE BACKBUTTON ========== */
+
+@media (max-width: 768px) {
+    .contentWrapper > :global(.backButton) {
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .contentWrapper > :global(.backButton) {
+        margin-bottom: var(--spacing-md);
+    }
+}
+

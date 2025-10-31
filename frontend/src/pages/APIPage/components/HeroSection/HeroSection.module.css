@@ -1,0 +1,401 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== FONDOS ESPACIALES ESTILO APPLE PRO ========== */
+
+.hero.dark {
+    background: #000000;
+    background-image:
+            radial-gradient(ellipse at 20% 30%, rgba(30, 30, 80, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(50, 20, 80, 0.12) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(20, 20, 40, 0.1) 0%, transparent 100%);
+}
+
+.hero.light {
+    background: linear-gradient(180deg, #c9d6df 0%, #b5c4cf 50%, #a1b2bf 100%);
+}
+
+.hero.minimal {
+    background: linear-gradient(180deg, #d4d4d4 0%, #c8c8c8 50%, #bcbcbc 100%);
+}
+
+
+/* Efecto de estrellas en dark mode */
+.hero.dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+            radial-gradient(2px 2px at 20% 30%, white, transparent),
+            radial-gradient(2px 2px at 60% 70%, white, transparent),
+            radial-gradient(1px 1px at 50% 50%, white, transparent),
+            radial-gradient(1px 1px at 80% 10%, white, transparent),
+            radial-gradient(2px 2px at 90% 60%, white, transparent),
+            radial-gradient(1px 1px at 33% 90%, white, transparent),
+            radial-gradient(1px 1px at 15% 80%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    opacity: 0.4;
+    pointer-events: none;
+    animation: starsMove 120s linear infinite;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    perspective: 1000px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== BADGE CON ANIMACIÓN ========== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 48px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    transform: translateZ(0);
+    position: relative;
+    z-index: 20;
+}
+
+.badge:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hero.dark .badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.hero.light .badge {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1d1d1f;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.hero.minimal .badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    border-color: rgba(90, 108, 125, 0.2);
+}
+
+.badgeIcon {
+    animation: starRotate 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes starRotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+/* ========== TÍTULO CON EFECTO HOVER INTERACTIVO RAINBOW ========== */
+
+.title {
+    font-size: clamp(64px, 12vw, 140px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 40px;
+    letter-spacing: -0.03em;
+    cursor: default;
+    user-select: none;
+    position: relative;
+    z-index: 15;
+
+    /* Optimizaciones 120fps */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    contain: layout paint;
+}
+
+/* Cada letra individualmente animable */
+.title .char {
+    display: inline-block;
+    will-change: transform, color, text-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    /* Optimizaciones de performance críticas */
+    contain: layout style paint;
+    isolation: isolate;
+
+    /* Remover transition para control total con GSAP */
+}
+
+/* Colores base por tema */
+.hero.dark .title {
+    color: #ffffff;
+}
+
+.hero.light .title {
+    color: #1a1a1a;
+}
+
+.hero.minimal .title {
+    color: #1a1a1a;
+}
+
+/* ========== SUBTÍTULO ========== */
+
+.subtitle {
+    font-size: clamp(20px, 3vw, 28px);
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 15;
+}
+
+.hero.dark .subtitle {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hero.light .subtitle {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.hero.minimal .subtitle {
+    color: #5a6c7d;
+}
+
+/* ========== OPTIMIZACIÓN PARA 60 FPS ========== */
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Large tablets / Small laptops (1025px - 1280px) */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .hero {
+        padding: 80px 60px 80px;
+    }
+
+    .title {
+        font-size: clamp(56px, 7vw, 100px); /* Rango reducido */
+        line-height: 1.03;
+        letter-spacing: -0.028em;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    .subtitle {
+        font-size: clamp(18px, 2.2vw, 24px);
+        max-width: 900px;
+    }
+}
+
+/* Tablet landscape (769px - 1024px) - INCLUYE TABLETS GRANDES */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .hero {
+        padding: 80px 48px 80px; /*  Más padding lateral */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .badge {
+        font-size: 13px;
+        padding: 11px 24px;
+        margin-bottom: 38px;
+    }
+
+    .title {
+        font-size: clamp(48px, 6vw, 78px); /*  MÁS PEQUEÑO (era 54px-86px) */
+        margin-bottom: 32px;
+        line-height: 1.04; /*  Más compacto */
+        letter-spacing: -0.025em;
+        word-break: break-word; /*  Rompe palabras largas */
+        hyphens: auto;
+    }
+
+    .subtitle {
+        font-size: clamp(16px, 2vw, 20px); /*  Más pequeño */
+        max-width: 850px;
+        line-height: 1.6;
+        padding: 0 20px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .hero {
+        padding: 70px 32px 70px; /*  Padding simétrico */
+        min-height: 100vh; /*  Altura completa para centrado */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .badge {
+        font-size: 12px; /*  Más pequeño */
+        padding: 10px 20px;
+        margin-bottom: 32px; /*  Menos espacio */
+    }
+
+    .title {
+        font-size: clamp(44px, 8vw, 64px); /*  RANGO MÁS PEQUEÑO */
+        margin-bottom: 28px; /*  Menos espacio */
+        line-height: 1.08; /*  Líneas más pegadas */
+        letter-spacing: -0.02em;
+        word-break: break-word; /* Rompe palabras largas */
+        hyphens: auto; /*  Guiones automáticos */
+    }
+
+    .subtitle {
+        font-size: clamp(15px, 2.3vw, 18px); /*  Más pequeño */
+        max-width: 100%;
+        line-height: 1.5; /*  Mejor legibilidad */
+        padding: 0 16px; /*  Más padding */
+        margin-bottom: 24px; /*  Espacio abajo */
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 20px 60px; /*  Padding simétrico */
+        min-height: 100vh; /*  Altura completa viewport */
+        display: flex;
+        align-items: center; /*  Centrado vertical */
+        justify-content: center;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%; /*  Full width */
+    }
+
+    .badge {
+        font-size: 11px; /*  Más pequeño */
+        padding: 8px 16px; /* Más compacto */
+        margin-bottom: 24px; /*  Menos espacio */
+        gap: 6px;
+    }
+
+    .badgeIcon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .title {
+        font-size: clamp(36px, 10vw, 48px); /*  RANGO MÁS PEQUEÑO */
+        margin-bottom: 24px; /*  Menos espacio */
+        line-height: 1.1; /*  Líneas más pegadas */
+        letter-spacing: -0.02em;
+        word-break: break-word; /*  Rompe palabras largas */
+        hyphens: auto; /*  Guiones automáticos */
+    }
+
+    .subtitle {
+        font-size: clamp(14px, 3.5vw, 16px); /*  Más pequeño */
+        line-height: 1.5; /*  Legibilidad óptima */
+        padding: 0 4px; /*  Menos padding */
+        margin-bottom: 20px; /*  Espacio abajo */
+    }
+}
+
+/* Extra small devices (320px - 375px) */
+@media (max-width: 375px) {
+    .hero {
+        padding: 50px 16px 50px; /*  Aún más compacto */
+        min-height: 100vh;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 7px 14px;
+        margin-bottom: 20px;
+        gap: 5px;
+    }
+
+    .badgeIcon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .title {
+        font-size: clamp(32px, 9vw, 42px); /*  MUCHO MÁS PEQUEÑO */
+        margin-bottom: 20px;
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+    }
+
+    .subtitle {
+        font-size: clamp(13px, 3.2vw, 15px); /*  Más pequeño */
+        line-height: 1.5;
+        padding: 0 2px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Performance optimizations - respeta preferencias del usuario */
+@media (prefers-reduced-motion: reduce) {
+    .badge,
+    .badgeIcon,
+    .title .char,
+    .hero.dark::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .title {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

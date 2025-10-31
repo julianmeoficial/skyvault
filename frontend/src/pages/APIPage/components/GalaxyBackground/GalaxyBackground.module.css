@@ -1,0 +1,29 @@
+.galaxyCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+
+    /* Optimizaciones críticas */
+    will-change: contents;
+    contain: strict;
+    image-rendering: optimizeSpeed;
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .galaxyCanvas {
+        display: none;
+    }
+}
+
+/* En móvil, reducir calidad para mejor rendimiento */
+@media (max-width: 768px) {
+    .galaxyCanvas {
+        image-rendering: auto;
+    }
+}

@@ -1,0 +1,25 @@
+.logo {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-fast);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.fallbackText {
+    font-size: 0.8125rem;
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(13, 75, 122, 0.1);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}

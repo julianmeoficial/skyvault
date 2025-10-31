@@ -1,0 +1,443 @@
+/* ========================================
+   CONTENEDOR PRINCIPAL
+======================================== */
+
+.section {
+    width: 100%;
+    padding: 6rem 0;
+    background: linear-gradient(
+            180deg,
+            var(--color-bg-section) 0%,
+            var(--color-bg-white) 50%,
+            var(--color-bg-section) 100%
+    );
+    position: relative;
+    transition: background var(--transition-normal);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+    transition: color var(--transition-normal);
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    transition: color var(--transition-normal);
+}
+
+/* ========================================
+   GRID
+======================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+/* ========================================
+   CARDS CON SOMBRAS Y ANIMACIÓN
+======================================== */
+
+.card {
+    background: var(--color-bg-card);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+
+    /* Animación CSS pura */
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+    transition: all var(--transition-normal);
+}
+
+/* Stagger automático */
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.3s; }
+.card:nth-child(5) { animation-delay: 0.4s; }
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-strong);
+}
+
+/* Card ancha (2 columnas) */
+.cardWide {
+    grid-column: span 2;
+}
+
+/* ========================================
+   ICONOS PROTAGONISTAS
+======================================== */
+
+.iconCircle {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    background: linear-gradient(135deg,
+    var(--color-accent-lighter) 0%,
+    var(--color-accent-light) 50%,
+    var(--color-accent-lighter) 100%
+    );
+
+    border-radius: 50%;
+    border: 2px solid var(--color-border-light);
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconCircle::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    left: 15%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 70%
+    );
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(13, 75, 122, 0.1));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover .iconCircle {
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-strong);
+}
+
+.card:hover .iconCircle::before {
+    opacity: 0.9;
+}
+
+.card:hover .icon {
+    transform: scale(1.12);
+    filter: drop-shadow(0 4px 8px rgba(13, 75, 122, 0.15));
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.card:hover .iconCircle {
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.iconCircle::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.card:hover .iconCircle::after {
+    opacity: 1;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-color: var(--color-border-strong);
+}
+
+/* ========================================
+   CONTENIDO
+======================================== */
+
+.cardTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.3;
+    transition: color var(--transition-normal);
+}
+
+.cardDescription {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    text-align: center;
+    margin: 0;
+    transition: color var(--transition-normal);
+}
+
+/* ========================================
+   OPERADORES (AEROLÍNEAS)
+======================================== */
+
+.operatorsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.operatorTag {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--color-accent-lighter);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.operatorTag:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-strong);
+    background: var(--color-accent-light);
+}
+
+/* ========================================
+   DARK THEME - ESTILO GALAXIA
+======================================== */
+
+[data-theme="dark"] .iconCircle {
+    background: linear-gradient(135deg,
+    rgba(74, 159, 216, 0.15) 0%,
+    rgba(30, 90, 125, 0.2) 50%,
+    rgba(42, 63, 82, 0.15) 100%
+    );
+    box-shadow:
+            0 8px 32px rgba(74, 159, 216, 0.2),
+            0 4px 16px rgba(74, 159, 216, 0.15),
+            inset 0 2px 8px rgba(178, 229, 255, 0.1);
+}
+
+[data-theme="dark"] .iconCircle::before {
+    background: radial-gradient(
+            ellipse at center,
+            rgba(178, 229, 255, 0.3) 0%,
+            rgba(178, 229, 255, 0.1) 50%,
+            transparent 70%
+    );
+}
+
+[data-theme="dark"] .card:hover .iconCircle {
+    box-shadow:
+            0 12px 48px rgba(74, 159, 216, 0.3),
+            0 6px 24px rgba(74, 159, 216, 0.2),
+            inset 0 3px 12px rgba(178, 229, 255, 0.15);
+}
+
+/* ========================================
+   MINIMAL THEME - SOLO COLORES NEUTROS
+======================================== */
+
+[data-theme="minimal"] .iconCircle {
+    background: linear-gradient(135deg,
+    #f5f5f5 0%,
+    #e8e8e8 50%,
+    #f0f0f0 100%
+    );
+    border-color: rgba(113, 128, 150, 0.2);
+    box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.08),
+            0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="minimal"] .iconCircle::before {
+    background: radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 70%
+    );
+}
+
+[data-theme="minimal"] .card:hover .iconCircle {
+    box-shadow:
+            0 6px 16px rgba(0, 0, 0, 0.12),
+            0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="minimal"] .operatorTag {
+    background: #f5f5f5;
+    border-color: rgba(113, 128, 150, 0.2);
+}
+
+[data-theme="minimal"] .operatorTag:hover {
+    background: #e8e8e8;
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.05rem;
+    }
+
+    .grid {
+        gap: 2rem;
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    .iconCircle {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 1.75rem;
+    }
+
+    .icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .cardTitle {
+        font-size: 1.25rem;
+    }
+
+    .cardDescription {
+        font-size: 0.95rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cardWide {
+        grid-column: span 1;
+    }
+
+    .card {
+        padding: 1.75rem;
+    }
+
+    .iconCircle {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 1.5rem;
+    }
+
+    .icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .cardTitle {
+        font-size: 1.15rem;
+    }
+
+    .cardDescription {
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    .operatorTag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+}

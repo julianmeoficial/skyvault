@@ -1,0 +1,463 @@
+.card {
+    position: relative;
+    padding: 44px 36px;
+    border-radius: 28px;
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* Optimizaciones críticas 120fps */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+    transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== MODO DARK OPTIMIZADO ========== */
+
+.card.dark {
+    background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(139, 92, 246, 0.06) 100%
+    );
+    border-color: rgba(59, 130, 246, 0.25);
+    color: #eceff1;
+}
+
+/* HOVER SIMPLIFICADO - Eliminado el efecto glassmorphism killer */
+.card.dark:hover {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.25) 0%,
+    rgba(59, 130, 246, 0.18) 100%
+    );
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow:
+            0 0 60px rgba(139, 92, 246, 0.35),
+            0 0 120px rgba(59, 130, 246, 0.2);
+}
+
+/* ========== MODO LIGHT ========== */
+
+.card.light {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(178, 229, 255, 0.3) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.2);
+}
+
+.card.light:hover {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(178, 229, 255, 0.5) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.4);
+    box-shadow: 0 24px 64px rgba(13, 75, 122, 0.2);
+}
+
+/* ========== MODO MINIMAL ========== */
+
+.card.minimal {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(232, 237, 242, 0.6) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.2);
+}
+
+.card.minimal:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(90, 108, 125, 0.4);
+    box-shadow: 0 24px 64px rgba(90, 108, 125, 0.18);
+}
+
+/* ========== HIGHLIGHTED CARD ========== */
+
+.card.highlighted {
+    transform: scale(1.05) translateZ(0);
+}
+
+.card.dark.highlighted {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.2) 0%,
+    rgba(59, 130, 246, 0.14) 100%
+    );
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 24px 64px rgba(139, 92, 246, 0.35);
+}
+
+.card.light.highlighted {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(178, 229, 255, 0.6) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.4);
+    box-shadow: 0 24px 64px rgba(13, 75, 122, 0.2);
+}
+
+.card.minimal.highlighted {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(90, 108, 125, 0.4);
+    box-shadow: 0 24px 64px rgba(90, 108, 125, 0.2);
+}
+
+/* ========== BADGE ========== */
+
+.badge {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
+    z-index: 10;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 12px 32px rgba(139, 92, 246, 0.7);
+    }
+}
+
+/* ========== HEADER ========== */
+
+.header {
+    margin-bottom: 36px;
+}
+
+.name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.card.dark .name {
+    color: #ffffff;
+}
+
+.card.light .name {
+    color: #0d4b7a;
+}
+
+.card.minimal .name {
+    color: #2c3e50;
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.price {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.card.dark .price {
+    background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card.light .price {
+    color: #0d4b7a;
+}
+
+.card.minimal .price {
+    color: #2c3e50;
+}
+
+.period {
+    font-size: 17px;
+    font-weight: 600;
+    opacity: 0.7;
+    transition: color 0.3s ease;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.88;
+    transition: color 0.3s ease;
+}
+
+.card.dark .description {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.card.light .description {
+    color: rgba(13, 75, 122, 0.85);
+}
+
+.card.minimal .description {
+    color: #5a6c7d;
+}
+
+/* ========== FEATURES ========== */
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 36px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: transform 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateX(4px);
+}
+
+.card.dark .feature {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card.light .feature {
+    color: rgba(13, 75, 122, 0.92);
+}
+
+.card.minimal .feature {
+    color: #5a6c7d;
+}
+
+.feature svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover svg {
+    transform: scale(1.15);
+}
+
+.card.dark .feature svg {
+    color: #a78bfa;
+}
+
+.card.light .feature svg {
+    color: #4a9fd8;
+}
+
+.card.minimal .feature svg {
+    color: #7b8c9e;
+}
+
+/* ========== BUTTON ========== */
+
+.button {
+    width: 100%;    padding: 16px 28px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+    position: relative;
+}
+
+.primaryButton {
+    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+}
+
+.primaryButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(139, 92, 246, 0.5);
+}
+
+.secondaryButton {
+    background: transparent;
+}
+
+.card.dark .secondaryButton {
+    border-color: rgba(139, 92, 246, 0.4);
+    color: #a78bfa;
+}
+
+.card.light .secondaryButton {
+    border-color: rgba(13, 75, 122, 0.3);
+    color: #0d4b7a;
+}
+
+.card.minimal .secondaryButton {
+    border-color: rgba(90, 108, 125, 0.3);
+    color: #5a6c7d;
+}
+
+.secondaryButton:hover {
+    transform: translateY(-3px);
+}
+
+.card.dark .secondaryButton:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.7);
+}
+
+.card.light .secondaryButton:hover {
+    background: rgba(13, 75, 122, 0.08);
+    border-color: rgba(13, 75, 122, 0.5);
+}
+
+.card.minimal .secondaryButton:hover {
+    background: rgba(90, 108, 125, 0.08);
+    border-color: rgba(90, 108, 125, 0.5);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .card {
+        padding: 40px 32px; /* Más generoso */
+        border-radius: 26px;
+    }
+
+    .card.highlighted {
+        transform: scale(1) translateZ(0); /*  Sin scale en mobile */
+    }
+
+    .badge {
+        top: 10px; /* Más espacio arriba */
+        font-size: 11px;
+        padding: 7px 18px;
+    }
+
+    .name {
+        font-size: 20px; /*  Más grande */
+        margin-bottom: 18px;
+    }
+
+    .price {
+        font-size: 52px; /*  Más grande */
+    }
+
+    .period {
+        font-size: 16px;
+    }
+
+    .description {
+        font-size: 15px; /*  Más legible */
+        line-height: 1.6;
+        margin-bottom: 28px;
+    }
+
+    .features {
+        gap: 18px; /* Más espacio */
+        margin-bottom: 32px;
+    }
+
+    .feature {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .button {
+        padding: 17px 30px; /*  Más generoso */
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 36px 28px; /* Más cómodo */
+        border-radius: 22px;
+    }
+
+    .badge {
+        top: 9px;
+        font-size: 10px;
+        padding: 6px 16px;
+    }
+
+    .name {
+        font-size: 19px;
+        margin-bottom: 16px;
+    }
+
+    .price {
+        font-size: 46px; /* Buen tamaño */
+    }
+
+    .period {
+        font-size: 15px;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    .features {
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+
+    .feature {
+        font-size: 13px;
+        gap: 11px;
+    }
+
+    .button {
+        padding: 16px 26px;
+        font-size: 14px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .badge,
+    .feature,
+    .button {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

@@ -1,0 +1,148 @@
+/* ========== COMPARE BUTTON - ARROW ANIMATION STYLE ========== */
+
+.compareButton {
+    --primary-color: #32b8c6; /* SkyVault primary */
+    --icon-bg: #ffffff; /* Fondo blanco del círculo */
+
+    font-family: inherit;
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px solid rgba(50, 184, 198, 0.5); /* ✅ Borde semi-transparente */
+    cursor: pointer;
+    border-radius: 10rem; /* Pill shape */
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    padding-left: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 140px;
+    justify-content: center;
+
+    /* ✅ GLASSMORPHISM (estado normal) */
+    background: rgba(50, 184, 198, 0.15); /* Fondo semi-transparente */
+    backdrop-filter: blur(12px); /* Efecto cristal */
+    -webkit-backdrop-filter: blur(12px);
+    color: #ffffff; /* Texto blanco */
+    box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3); /* Brillo interno */
+
+    transition: all 0.3s ease;
+}
+
+/* ✅ HOVER: fondo azul sólido SkyVault */
+.compareButton:hover {
+    background: var(--primary-color); /* Azul sólido */
+    backdrop-filter: none; /* Sin blur en hover */
+    border-color: var(--primary-color);
+    box-shadow:
+            0 6px 20px rgba(50, 184, 198, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Disabled state */
+.compareButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.compareButton:disabled:hover {
+    background-color: var(--primary-color); /* No cambia en hover si disabled */
+}
+
+/* ========== ICON WRAPPER (CÍRCULO BLANCO) ========== */
+
+.iconWrapper {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    color: var(--primary-color); /* ✅ Flecha azul en estado normal */
+    background-color: var(--icon-bg);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ✅ HOVER: círculo también se vuelve blanco opaco, flecha azul */
+.compareButton:hover .iconWrapper {
+    color: var(--primary-color); /* Flecha sigue azul */
+    background-color: rgba(255, 255, 255, 0.95); /* Blanco más opaco */
+}
+
+/* ========== ICON SVG (FLECHA) ========== */
+
+.iconSvg {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Flecha copia (oculta inicialmente, abajo a la izquierda) */
+.iconSvgCopy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+}
+
+/* Hover: flecha original sale hacia arriba-derecha */
+.compareButton:hover .iconSvg:first-child {
+    transform: translate(150%, -150%);
+}
+
+/* Hover: flecha copia entra desde abajo-izquierda */
+.compareButton:hover .iconSvgCopy {
+    transition: transform 0.3s ease-in-out 0.1s; /* Delay de 0.1s */
+    transform: translate(0, 0);
+}
+
+/* ========== LABEL ========== */
+
+.label {
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .compareButton {
+        padding: 0.65rem 1.25rem;
+        padding-left: 1rem;
+        font-size: 0.9rem;
+        min-width: 120px;
+        gap: 0.65rem;
+    }
+
+    .iconWrapper {
+        width: 22px;
+        height: 22px;
+    }
+
+    .iconSvg {
+        width: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .compareButton {
+        padding: 0.6rem 1rem;
+        padding-left: 0.85rem;
+        font-size: 0.85rem;
+        min-width: 100px;
+        gap: 0.5rem;
+    }
+
+    .iconWrapper {
+        width: 20px;
+        height: 20px;
+    }
+
+    .iconSvg {
+        width: 8px;
+    }
+}

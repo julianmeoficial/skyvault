@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500&display=swap");
+
+/* =================== DOTS LOADING ANIMATION (PRIMERO) =================== */
+.dotsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    animation: fadeOutSmooth 0.6s ease-in-out 1.5s forwards;
+}
+
+.container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    filter: url("#goo");
+    animation: rotateMove 2s ease-in-out infinite;
+}
+
+.dot {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.dot3 {
+    background-color: #B2E5FF;
+    animation: dot3Move 2s ease infinite, index 6s ease infinite;
+}
+
+.dot2 {
+    background-color: #D3E9FF;
+    animation: dot2Move 2s ease infinite, index 6s -4s ease infinite;
+}
+
+.dot1 {
+    background-color: #FFFFFF;
+    animation: dot1Move 2s ease infinite, index 6s -2s ease infinite;
+}
+
+/* =================== LETTER LOADER ANIMATION (SEGUNDO) =================== */
+.letterLoaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loaderWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    font-family: "Inter", sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: rgb(138, 231, 238);
+    border-radius: 50%;
+    background-color: transparent;
+    user-select: none;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: transparent;
+    animation: loaderRotate 2s linear infinite;
+    z-index: 0;
+}
+
+.loaderLetter {
+    display: inline-block;
+    opacity: 0.4;
+    transform: translateY(0);
+    animation: loaderLetterAnim 2s infinite;
+    z-index: 1;
+    border-radius: 50ch;
+    border: none;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(138, 231, 238, 0.5);
+}
+
+/* Delays para cada letra de "Construyendo" */
+.loaderLetter:nth-child(1) { animation-delay: 0s; }
+.loaderLetter:nth-child(2) { animation-delay: 0.08s; }
+.loaderLetter:nth-child(3) { animation-delay: 0.16s; }
+.loaderLetter:nth-child(4) { animation-delay: 0.24s; }
+.loaderLetter:nth-child(5) { animation-delay: 0.32s; }
+.loaderLetter:nth-child(6) { animation-delay: 0.40s; }
+.loaderLetter:nth-child(7) { animation-delay: 0.48s; }
+.loaderLetter:nth-child(8) { animation-delay: 0.56s; }
+.loaderLetter:nth-child(9) { animation-delay: 0.64s; }
+.loaderLetter:nth-child(10) { animation-delay: 0.72s; }
+.loaderLetter:nth-child(11) { animation-delay: 0.80s; }
+.loaderLetter:nth-child(12) { animation-delay: 0.88s; }
+
+/* =================== KEYFRAMES =================== */
+@keyframes dot3Move {
+    20% {
+        transform: scale(1);
+    }
+    45% {
+        transform: translateY(-18px) scale(0.45);
+    }
+    60% {
+        transform: translateY(-90px) scale(0.45);
+    }
+    80% {
+        transform: translateY(-90px) scale(0.45);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes dot2Move {
+    20% {
+        transform: scale(1);
+    }
+    45% {
+        transform: translate(-16px, 12px) scale(0.45);
+    }
+    60% {
+        transform: translate(-80px, 60px) scale(0.45);
+    }
+    80% {
+        transform: translate(-80px, 60px) scale(0.45);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes dot1Move {
+    20% {
+        transform: scale(1);
+    }
+    45% {
+        transform: translate(16px, 12px) scale(0.45);
+    }
+    60% {
+        transform: translate(80px, 60px) scale(0.45);
+    }
+    80% {
+        transform: translate(80px, 60px) scale(0.45);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes rotateMove {
+    55% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes index {
+    0%, 100% {
+        z-index: 3;
+    }
+    33.3% {
+        z-index: 2;
+    }
+    66.6% {
+        z-index: 1;
+    }
+}
+
+@keyframes fadeOutSmooth {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.05);
+        visibility: hidden;
+    }
+}
+
+@keyframes loaderRotate {
+    0% {
+        transform: rotate(90deg);
+        box-shadow:
+                0 10px 20px 0 #fff inset,
+                0 20px 30px 0 #B2E5FF inset,
+                0 60px 60px 0 #D3E9FF inset;
+    }
+    50% {
+        transform: rotate(270deg);
+        box-shadow:
+                0 10px 20px 0 #fff inset,
+                0 20px 10px 0 #a4f5ea inset,
+                0 40px 60px 0 #5f85ee inset;
+    }
+    100% {
+        transform: rotate(450deg);
+        box-shadow:
+                0 10px 20px 0 #fff inset,
+                0 20px 30px 0 #B2E5FF inset,
+                0 60px 60px 0 #D3E9FF inset;
+    }
+}
+
+@keyframes loaderLetterAnim {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.15);
+        text-shadow: 0 0 15px rgba(138, 231, 238, 0.8);
+    }
+    40% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+    .loaderWrapper {
+        width: 180px;
+        height: 180px;
+        font-size: 1rem;
+    }
+}

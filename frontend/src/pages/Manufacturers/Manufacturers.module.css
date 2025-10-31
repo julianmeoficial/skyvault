@@ -1,0 +1,85 @@
+.manufacturersPage {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-aerospace-day);
+    color: var(--text-primary);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: background-color;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tema Día - Azul Aeronáutico */
+[data-theme="light"] .manufacturersPage {
+    --bg-aerospace-day: linear-gradient(180deg, #0a1929 0%, #1a3a52 50%, #2d5f7f 100%);
+    --bg-section-overlay: rgba(255, 255, 255, 0.02);
+    --accent-glow: rgba(66, 165, 245, 0.3);
+}
+
+/* Tema Oscuro - Negro Espacial/Galaxia */
+[data-theme="dark"] .manufacturersPage {
+    --bg-aerospace-day: linear-gradient(180deg, #000000 0%, #0d1117 50%, #161b22 100%);
+    --bg-section-overlay: rgba(255, 255, 255, 0.01);
+    --accent-glow: rgba(138, 180, 248, 0.2);
+}
+
+/* Tema Minimalista - Tonos Pastel */
+[data-theme="minimal"] .manufacturersPage {
+    --bg-aerospace-day: linear-gradient(180deg, #f5f7fa 0%, #e8ecf1 50%, #dde2e9 100%);
+    --bg-section-overlay: rgba(0, 0, 0, 0.02);
+    --accent-glow: rgba(100, 120, 140, 0.15);
+}
+
+.fixedControls {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+.fixedControls > * {
+    pointer-events: auto;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .fixedControls {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fixedControls {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fixedControls {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+    }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+    .manufacturersPage * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

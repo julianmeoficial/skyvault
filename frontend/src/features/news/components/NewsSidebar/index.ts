@@ -1,0 +1,1 @@
+export { NewsSidebar } from './NewsSidebar';

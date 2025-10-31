@@ -1,0 +1,66 @@
+/* ========== BACK BUTTON (CIRCULAR) ========== */
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px; /* ✅ Circular/píldora */
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.backButton:active {
+    transform: translateY(0);
+}
+
+/* Flecha SVG */
+.arrow {
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.backButton:hover .arrow {
+    transform: translateX(-4px);
+}
+
+/* Label */
+.label {
+    font-family: inherit;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .backButton {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .label {
+        display: none; /* Ocultar texto en mobile */
+    }
+
+    .backButton {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%; /* Completamente circular en mobile */
+    }
+}

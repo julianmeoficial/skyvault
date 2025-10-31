@@ -1,0 +1,126 @@
+.teamMemberCard {
+    width: 100%;
+    max-width: 280px;
+    height: 160px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 10px solid #FFFFFF;
+    border-radius: 24px;
+    box-shadow:
+            inset 6px 6px 12px rgba(13, 75, 122, 0.08),
+            inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+            8px 8px 16px rgba(13, 75, 122, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.teamMemberCard:hover {
+    height: 340px;
+    box-shadow:
+            inset 6px 6px 12px rgba(13, 75, 122, 0.12),
+            inset -6px -6px 12px rgba(255, 255, 255, 1),
+            12px 12px 24px rgba(13, 75, 122, 0.15);
+}
+
+.teamMemberCard__icon {
+    width: 80px;
+    height: 80px;
+    font-size: 48px;
+    background-color: #FFFFFF;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow:
+            8px 8px 16px rgba(13, 75, 122, 0.12),
+            -8px -8px 16px rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.teamMemberCard:hover .teamMemberCard__icon {
+    transform: scale(1.05);
+    box-shadow:
+            10px 10px 20px rgba(13, 75, 122, 0.15),
+            -10px -10px 20px rgba(255, 255, 255, 1);
+}
+
+.teamMemberCard__avatarImage {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.teamMemberCard__content {
+    background-color: #FFFFFF;
+    padding: 16px;
+    margin: 8px 16px;
+    border-radius: 12px;
+    box-shadow:
+            8px 8px 16px rgba(13, 75, 122, 0.12),
+            -8px -8px 16px rgba(255, 255, 255, 0.9);
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.teamMemberCard:hover .teamMemberCard__content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.teamMemberCard__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0D4B7A;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+}
+
+.teamMemberCard__role {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0D4B7A;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.teamMemberCard__bio {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .teamMemberCard {
+        max-width: 100%;
+        height: 140px;
+    }
+
+    .teamMemberCard:hover {
+        height: 320px;
+    }
+
+    .teamMemberCard__icon {
+        width: 70px;
+        height: 70px;
+        font-size: 42px;
+    }
+
+    .teamMemberCard__avatarImage {
+        width: 52px;
+        height: 52px;
+    }
+
+    .teamMemberCard__name {
+        font-size: 18px;
+    }
+}

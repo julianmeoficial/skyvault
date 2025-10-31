@@ -1,0 +1,1 @@
+export { CompareSelectionModal } from './CompareSelectionModal';

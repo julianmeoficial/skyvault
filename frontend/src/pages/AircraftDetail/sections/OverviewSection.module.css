@@ -1,0 +1,220 @@
+/* ========== OVERVIEW SECTION - CON ANIMACIÓN DE RUTA ========== */
+
+.overviewSection {
+    position: relative;
+    width: 100%;
+    min-height: 120vh;
+    padding: 3.5rem 0 3rem 0;
+    background: linear-gradient(
+            180deg,
+            rgba(6, 20, 35, 1) 0%,
+            rgba(10, 30, 50, 1) 50%,
+            rgba(6, 20, 35, 1) 100%
+    );
+    overflow: hidden;
+
+    /* Starfield background */
+    background-image:
+            radial-gradient(2px 2px at 15% 20%, rgb(230, 244, 255), transparent),
+            radial-gradient(1px 1px at 45% 35%, rgb(230, 244, 255), transparent),
+            radial-gradient(2px 2px at 75% 50%, rgb(230, 244, 255), transparent),
+            radial-gradient(1px 1px at 25% 65%, rgb(230, 244, 255), transparent),
+            radial-gradient(2px 2px at 85% 80%, rgb(230, 244, 255), transparent);
+    background-size: 250px 250px;
+    background-position: 0 0, 50px 100px, 200px 50px, 100px 200px, 300px 150px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========== HEADER ========== */
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #0d4b7a;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(13, 75, 122, 0.7);
+}
+
+/* ========== CARDS CONTAINER - AUTO-SIZE FLEXIBLE ========== */
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(230px, 1fr)); /* ✅ Min 230px (+30px más ancho) */
+    gap: 3rem 1.5rem; /* ✅ Gap horizontal reducido a 1.5rem (antes 2rem) */
+    max-width: 1450px; /* ✅ Container más ancho (+50px) */
+    margin: 0 auto;
+    align-items: start;
+}
+
+.cardWrapper {
+    opacity: 0.3;
+    transform: scale(0.95) translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    min-height: 200px; /* ✅ +20px más alto (antes 180px) */
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ✅ ASEGURA QUE StatCard TAMBIÉN SEA FLEXIBLE */
+.cardWrapper > * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 0; /* Permite word-wrap en flex children */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Card activa (iluminada por GSAP) */
+.cardWrapper.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* ========== SVG PATH CURVO ========== */
+
+.pathSvg {
+    position: absolute;
+    top: 18%;
+    left: 65%;
+    transform: translateX(-75%);
+    width: 120%;
+    max-width: 1200px;
+    height: 55%;
+    z-index: 1;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* ========== AVIÓN ANIMADO ========== */
+
+.airplane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1;
+    will-change: transform;
+    transform-origin: center center;
+}
+
+.airplaneImage {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 4px 20px rgba(50, 184, 198, 0.6));
+}
+
+.airplaneTrail {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(
+            90deg,
+            rgba(50, 184, 198, 0),
+            rgba(50, 184, 198, 0.7),
+            rgba(50, 184, 198, 0)
+    );
+    transform: translateY(-50%);
+    opacity: 0.8;
+    filter: blur(2px);
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet grande (3 columnas) */
+@media (max-width: 1200px) {
+    .cardsContainer {
+        grid-template-columns: repeat(3, minmax(180px, 1fr)); /* ✅ 3 columnas más estrechas */
+        gap: 2.5rem 1.5rem;
+    }
+
+    .cardWrapper {
+        min-height: 170px;
+    }
+
+    .title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Tablet (2 columnas) */
+@media (max-width: 900px) {
+    .cardsContainer {
+        grid-template-columns: repeat(2, minmax(160px, 1fr)); /* ✅ 2 columnas */
+        gap: 3rem 1.5rem;
+    }
+
+    .cardWrapper {
+        min-height: 160px;
+    }
+
+    .airplaneImage {
+        width: 80px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile (1 columna) */
+@media (max-width: 600px) {
+    .overviewSection {
+        padding: 4rem 0;
+        min-height: auto; /* ✅ No forzar altura en mobile */
+    }
+
+    .cardsContainer {
+        grid-template-columns: 1fr; /* ✅ 1 columna completa */
+        gap: 2rem;
+    }
+
+    .cardWrapper {
+        min-height: 140px;
+    }
+
+    /* Ocultar avión y path en mobile */
+    .airplane,
+    .pathSvg {
+        display: none;
+    }
+
+    .header {
+        margin-bottom: 2.5rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+}

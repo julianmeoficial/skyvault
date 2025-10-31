@@ -1,0 +1,304 @@
+.footer {
+    position: relative;
+    background: #0a0a0a;
+    padding: 4rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 5;
+}
+
+.footer__container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer__column-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e5e5e5;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+}
+
+.footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer__link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #999999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer__link:hover {
+    color: #ffffff;
+}
+
+.footer__divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 2rem 0;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer__logo-image {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(178, 229, 255, 0.2));
+}
+
+.footer__logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.footer__copyright {
+    text-align: center;
+    flex: 1;
+}
+
+.footer__copyright-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #999999;
+    margin: 0 0 0.25rem 0;
+}
+
+.footer__copyright-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .footer__content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .footer__bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer__logo {
+        justify-content: center;
+    }
+
+    .footer__copyright {
+        order: 2;
+    }
+
+    .footer__social {
+        order: 3;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* =================== SOCIAL MEDIA SECTION =================== */
+.footer__social {
+    text-align: center;
+    margin: 3rem 0 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__social-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.social-card {
+    max-width: fit-content;
+    margin: 0 auto;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+    backdrop-filter: blur(15px);
+    box-shadow:
+            inset 0 0 20px rgba(178, 229, 255, 0.1),
+            inset 0 0 5px rgba(178, 229, 255, 0.15),
+            0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.social-card:hover {
+    background: rgba(178, 229, 255, 0.05);
+}
+
+.social-card ul {
+    padding: 1rem;
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.social-card ul li {
+    cursor: pointer;
+    position: relative;
+}
+
+.social-svg {
+    transition: all 0.3s;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    color: #B2E5FF;
+    fill: currentColor;
+    box-shadow:
+            inset 0 0 20px rgba(178, 229, 255, 0.2),
+            inset 0 0 5px rgba(178, 229, 255, 0.3),
+            0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.social-text {
+    opacity: 0;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s;
+    color: #B2E5FF;
+    background-color: rgba(13, 75, 122, 0.8);
+    position: absolute;
+    z-index: 9999;
+    box-shadow:
+            -5px 0 1px rgba(178, 229, 255, 0.2),
+            -10px 0 1px rgba(178, 229, 255, 0.2),
+            inset 0 0 20px rgba(255, 255, 255, 0.2),
+            inset 0 0 5px rgba(255, 255, 255, 0.3),
+            0 5px 5px rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.social-iso-pro {
+    transition: 0.5s;
+    position: relative;
+}
+
+.social-iso-pro:hover a > .social-svg {
+    transform: translate(15px, -15px);
+    border-radius: 100%;
+}
+
+.social-iso-pro:hover .social-text {
+    opacity: 1;
+    transform: translate(25px, -2px) skew(-5deg);
+}
+
+.social-iso-pro:hover .social-svg {
+    transform: translate(5px, -5px);
+}
+
+.social-iso-pro span {
+    opacity: 0;
+    position: absolute;
+    color: #B2E5FF;
+    border: 2px solid #B2E5FF;
+    box-shadow:
+            inset 0 0 20px rgba(178, 229, 255, 0.2),
+            inset 0 0 5px rgba(178, 229, 255, 0.3),
+            0 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s;
+    height: 60px;
+    width: 60px;
+    pointer-events: none;
+}
+
+.social-iso-pro:hover span {
+    opacity: 1;
+}
+
+.social-iso-pro:hover span:nth-child(1) {
+    opacity: 0.2;
+}
+
+.social-iso-pro:hover span:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px, -5px);
+}
+
+.social-iso-pro:hover span:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px, -10px);
+}
+
+@media (max-width: 480px) {
+    .social-card ul {
+        gap: 1rem;
+    }
+
+    .social-svg {
+        height: 50px;
+        width: 50px;
+        padding: 0.75rem;
+    }
+
+    .social-iso-pro span {
+        height: 50px;
+        width: 50px;
+    }
+}

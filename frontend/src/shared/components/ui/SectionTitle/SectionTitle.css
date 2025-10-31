@@ -1,0 +1,63 @@
+.sectionTitle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.02em;
+    color: #0D4B7A;
+    background-color: #E5EDF5;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-radius: 40px;
+    padding: 16px 32px;
+    box-shadow:
+            -4px -2px 16px 0px rgba(255, 255, 255, 0.9),
+            4px 2px 16px 0px rgba(13, 75, 122, 0.15);
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+    margin: 0 auto 48px;
+}
+
+.sectionTitle:hover {
+    color: #094170;
+    background-color: #E8F0F7;
+    box-shadow:
+            -2px -1px 8px 0px rgba(255, 255, 255, 0.9),
+            2px 1px 8px 0px rgba(13, 75, 122, 0.2);
+}
+
+.sectionTitle__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.sectionTitle__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.sectionTitle__text {
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .sectionTitle {
+        font-size: 24px;
+        padding: 12px 24px;
+        gap: 8px;
+    }
+
+    .sectionTitle__icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}

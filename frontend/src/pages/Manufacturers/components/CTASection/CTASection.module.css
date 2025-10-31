@@ -1,0 +1,326 @@
+.ctaSection {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px;
+    overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+}
+
+.animatedBackground {
+    position: absolute;
+    inset: -50%;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+}
+
+.gradientOrb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+            circle at center,
+            rgba(66, 165, 245, 0.3) 0%,
+            rgba(138, 180, 248, 0.15) 30%,
+            transparent 70%
+    );
+    filter: blur(80px);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+[data-theme="dark"] .gradientOrb {
+    background: radial-gradient(
+            circle at center,
+            rgba(138, 180, 248, 0.25) 0%,
+            rgba(100, 181, 246, 0.12) 30%,
+            transparent 70%
+    );
+}
+
+[data-theme="minimal"] .gradientOrb {
+    background: radial-gradient(
+            circle at center,
+            rgba(100, 120, 140, 0.2) 0%,
+            rgba(144, 164, 174, 0.1) 30%,
+            transparent 70%
+    );
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 32px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    background: linear-gradient(135deg, #ffffff, #e3f2fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="minimal"] .title {
+    background: linear-gradient(135deg, #1a1a1a, #424242);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.description {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto 64px;
+}
+
+[data-theme="minimal"] .description {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctaButton {
+    position: relative;
+    padding: 20px 48px;
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.ctaButton:active {
+    transform: scale(0.96);
+}
+
+.primary {
+    background: linear-gradient(135deg, #2196f3, #42a5f5);
+    color: #ffffff;
+    box-shadow:
+            0 10px 30px rgba(33, 150, 243, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+            0 20px 50px rgba(33, 150, 243, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="minimal"] .secondary {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.9);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.secondary:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="minimal"] .secondary:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.buttonContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.buttonIcon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaButton:hover .buttonIcon {
+    transform: translateX(4px) rotate(5deg);
+}
+
+.buttonGlow {
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.3),
+            transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ctaButton:hover .buttonGlow {
+    opacity: 1;
+}
+
+.floatingElements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floatElement {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+            circle at 30% 30%,
+            rgba(66, 165, 245, 0.15),
+            rgba(33, 150, 243, 0.05)
+    );
+    filter: blur(40px);
+}
+
+.float1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.float2 {
+    width: 250px;
+    height: 250px;
+    bottom: 15%;
+    right: 15%;
+    animation: float 15s ease-in-out infinite reverse;
+}
+
+.float3 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: 20%;
+    animation: float 18s ease-in-out infinite;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(40px, 10px) scale(1.05);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ctaSection {
+        padding: 100px 40px;
+    }
+
+    .gradientOrb {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ctaSection {
+        padding: 80px 28px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ctaButton {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .floatElement {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .ctaSection {
+        padding: 60px 20px;
+    }
+
+    .description {
+        margin-bottom: 48px;
+    }
+}
+
+/* Performance */
+@media (prefers-reduced-motion: reduce) {
+    .animatedBackground,
+    .gradientOrb,
+    .floatElement {
+        animation: none !important;
+    }
+
+    .ctaButton:hover {
+        transform: none !important;
+    }
+}

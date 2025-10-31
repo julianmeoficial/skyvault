@@ -1,0 +1,370 @@
+.cta {
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== FONDOS CONTINUOS ========== */
+
+.cta.dark {
+    background: #000000;
+    background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+            radial-gradient(ellipse at 30% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 70% 50%, rgba(30, 30, 50, 0.06) 0%, transparent 100%);
+}
+
+.cta.light {
+    background: #c9d6df;
+    background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(145, 160, 175, 0.3) 0%, transparent 50%),
+            radial-gradient(ellipse at 30% 70%, rgba(160, 175, 190, 0.25) 0%, transparent 50%);
+}
+
+.cta.minimal {
+    background: #d4d4d4;
+    background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(180, 180, 180, 0.35) 0%, transparent 50%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== PRICING SECTION ========== */
+
+.pricingSection {
+    margin-bottom: 120px;
+}
+
+.sectionTitle {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    will-change: transform, opacity;
+}
+
+.cta.dark .sectionTitle {
+    color: #ffffff;
+}
+
+.cta.light .sectionTitle {
+    color: #0d4b7a;
+}
+
+.cta.minimal .sectionTitle {
+    color: #2c3e50;
+}
+
+.sectionSubtitle {
+    font-size: clamp(17px, 2vw, 21px);
+    text-align: center;
+    margin-bottom: 72px;
+    opacity: 0.85;
+    will-change: transform, opacity;
+}
+
+.cta.dark .sectionSubtitle {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.cta.light .sectionSubtitle {
+    color: rgba(13, 75, 122, 0.85);
+}
+
+.cta.minimal .sectionSubtitle {
+    color: #5a6c7d;
+}
+
+/* ========== PRICING GRID CON MÁS ESPACIO ARRIBA ========== */
+
+.pricingGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+    padding-top: 24px; /* ✅ ESPACIO EXTRA para el badge "MÁS POPULAR" */
+}
+
+/* ========== CTA BOX OPTIMIZADO ========== */
+
+.ctaBox {
+    position: relative;
+    padding: 80px 64px;
+    border-radius: 32px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 2px solid;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 56px;
+    align-items: center;
+    overflow: hidden;
+
+    /* Optimizaciones 120fps */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+}
+
+.cta.dark .ctaBox {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(59, 130, 246, 0.10) 100%
+    );
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 24px 64px rgba(139, 92, 246, 0.25);
+}
+
+.cta.light .ctaBox {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(178, 229, 255, 0.4) 100%
+    );
+    border-color: rgba(13, 75, 122, 0.3);
+    box-shadow: 0 24px 64px rgba(13, 75, 122, 0.15);
+}
+
+.cta.minimal .ctaBox {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 237, 242, 0.6) 100%
+    );
+    border-color: rgba(90, 108, 125, 0.3);
+    box-shadow: 0 24px 64px rgba(90, 108, 125, 0.12);
+}
+
+.ctaContent {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.ctaTitle {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.cta.dark .ctaTitle {
+    background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cta.light .ctaTitle {
+    color: #0d4b7a;
+}
+
+.cta.minimal .ctaTitle {
+    color: #2c3e50;
+}
+
+.ctaDescription {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.88;
+}
+
+.cta.dark .ctaDescription {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cta.light .ctaDescription {
+    color: rgba(13, 75, 122, 0.88);
+}
+
+.cta.minimal .ctaDescription {
+    color: #5a6c7d;
+}
+
+/* ========== BOTÓN CTA ÚNICO ========== */
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 36px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    color: #ffffff;
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: max-content;
+
+    /* Optimizaciones */
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+.ctaButton:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 20px 48px rgba(139, 92, 246, 0.6);
+}
+
+.ctaButton:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* ========== ICONO CTA ========== */
+
+.ctaIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
+}
+
+.cta.dark .ctaIcon {
+    color: #a78bfa;
+}
+
+.cta.light .ctaIcon {
+    color: #4a9fd8;
+}
+
+.cta.minimal .ctaIcon {
+    color: #7b8c9e;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+    .pricingGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 36px;
+    }
+
+    .ctaBox {
+        grid-template-columns: 1fr;
+        padding: 64px 48px;
+        gap: 40px;
+    }
+
+    .ctaIcon {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta {
+        padding: 90px 28px; /* Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 56px;
+        padding: 0 12px;
+    }
+
+    .pricingSection {
+        margin-bottom: 90px; /* Más espacio */
+    }
+
+    .pricingGrid {
+        grid-template-columns: 1fr;
+        gap: 32px; /* Más espacio entre cards */
+        padding-top: 28px; /* Más espacio para badge */
+    }
+
+    .ctaBox {
+        padding: 52px 36px; /* Más generoso */
+        border-radius: 28px;
+        gap: 44px;
+    }
+
+    .ctaTitle {
+        font-size: clamp(28px, 5vw, 42px); /* Mejor rango */
+        margin-bottom: 20px;
+    }
+
+    .ctaDescription {
+        font-size: clamp(15px, 2.5vw, 18px); /* Más legible */
+        line-height: 1.6;
+    }
+
+    .ctaButton {
+        width: 100%;
+        padding: 18px 32px; /* Más padding */
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta {
+        padding: 70px 24px; /* Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 48px;
+        padding: 0 8px;
+    }
+
+    .pricingSection {
+        margin-bottom: 72px;
+    }
+
+    .pricingGrid {
+        gap: 28px; /*  Gap optimizado */
+        padding-top: 26px;
+    }
+
+    .ctaBox {
+        padding: 40px 28px; /*  Más cómodo */
+        border-radius: 24px;
+        gap: 36px;
+    }
+
+    .ctaTitle {
+        font-size: clamp(26px, 6vw, 36px);
+    }
+
+    .ctaDescription {
+        font-size: clamp(14px, 3vw, 16px);
+        line-height: 1.6;
+    }
+
+    .ctaButton {
+        padding: 16px 28px;
+        font-size: 15px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .ctaBox,
+    .ctaButton,
+    .ctaIcon {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .ctaBox {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

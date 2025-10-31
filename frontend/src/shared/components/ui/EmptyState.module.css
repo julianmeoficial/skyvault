@@ -1,0 +1,148 @@
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 400px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text, #1f2937);
+    margin: 1.5rem 0 0.75rem 0;
+    line-height: 1.4;
+}
+
+.searchTerm {
+    color: rgba(59, 130, 246, 1);
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary, #6b7280);
+    margin: 0 0 2rem 0;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    background: rgba(59, 130, 246, 1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.button:hover {
+    background: rgba(59, 130, 246, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.buttonSecondary {
+    background: transparent;
+    color: rgba(59, 130, 246, 1);
+    border: 2px solid rgba(59, 130, 246, 1);
+    box-shadow: none;
+}
+
+.buttonSecondary:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .title {
+        color: var(--color-text, #f9fafb);
+    }
+
+    .searchTerm {
+        color: rgba(96, 165, 250, 1);
+    }
+
+    .subtitle {
+        color: var(--color-text-secondary, #9ca3af);
+    }
+
+    .button {
+        background: rgba(96, 165, 250, 1);
+    }
+
+    .button:hover {
+        background: rgba(96, 165, 250, 0.9);
+    }
+
+    .buttonSecondary {
+        color: rgba(96, 165, 250, 1);
+        border-color: rgba(96, 165, 250, 1);
+    }
+
+    .buttonSecondary:hover {
+        background: rgba(96, 165, 250, 0.15);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .emptyState {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
+
+/* ... estilos existentes ... */
+
+.suggestion {
+    font-size: 0.95rem;
+    color: rgba(59, 130, 246, 1);
+    margin: -1rem 0 1.5rem 0;
+    font-weight: 500;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    /* ... estilos existentes ... */
+
+    .suggestion {
+        color: rgba(96, 165, 250, 1);
+    }
+}

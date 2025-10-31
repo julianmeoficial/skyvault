@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
+  }
+}

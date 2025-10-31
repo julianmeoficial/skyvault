@@ -1,0 +1,336 @@
+.sidebar {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--spacing-2xl);
+    animation: slideInDown 0.8s ease-out both;
+}
+
+.categoryList {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: var(--spacing-sm);
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 32px 0 rgba(13, 75, 122, 0.12),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+[data-theme="dark"] .categoryList {
+    background: rgba(19, 47, 76, 0.4);
+    border: 1px solid rgba(178, 229, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(178, 229, 255, 0.1);
+}
+
+[data-theme="minimal"] .categoryList {
+    background: rgba(245, 246, 248, 0.6);
+    border: 1px solid rgba(90, 108, 125, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(90, 108, 125, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.categoryList::-webkit-scrollbar {
+    height: 6px;
+}
+
+.categoryList::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.categoryList::-webkit-scrollbar-thumb {
+    background: rgba(13, 75, 122, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.categoryList::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+.categoryButton {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-width: 70px;
+    flex-shrink: 0;
+
+    background: rgba(255, 255, 255, 0.4);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+
+    box-shadow: 6px 6px 12px rgba(13, 75, 122, 0.08),
+    -6px -6px 12px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+[data-theme="dark"] .categoryButton {
+    background: rgba(30, 58, 88, 0.4);
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(178, 229, 255, 0.15);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3),
+    -6px -6px 12px rgba(178, 229, 255, 0.05);
+}
+
+[data-theme="minimal"] .categoryButton {
+    background: rgba(248, 249, 250, 0.6);
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(90, 108, 125, 0.2);
+    box-shadow: 6px 6px 12px rgba(90, 108, 125, 0.06),
+    -6px -6px 12px rgba(255, 255, 255, 0.9);
+}
+
+.categoryButton:hover {
+    transform: translateY(-3px) scale(1.03);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+
+    box-shadow: 4px 4px 12px rgba(13, 75, 122, 0.12),
+    -4px -4px 12px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(13, 75, 122, 0.08);
+}
+
+[data-theme="dark"] .categoryButton:hover {
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4),
+    -8px -8px 16px rgba(178, 229, 255, 0.08),
+    0 0 20px rgba(74, 159, 216, 0.15);
+}
+
+.categoryButton.active {
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+    border-color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow: inset 2px 2px 6px rgba(8, 53, 84, 0.3),
+    inset -2px -2px 6px rgba(74, 159, 216, 0.15),
+    0 6px 18px rgba(13, 75, 122, 0.25);
+}
+
+[data-theme="dark"] .categoryButton.active {
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5),
+    inset -4px -4px 8px rgba(178, 229, 255, 0.1),
+    0 8px 24px rgba(74, 159, 216, 0.4);
+}
+
+.categoryButton:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: inset 6px 6px 12px rgba(13, 75, 122, 0.15),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+.categoryIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    transition: all 0.35s ease-out;
+}
+
+.categoryButton:hover .categoryIcon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.categoryButton.active .categoryIcon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+.categoryIcon svg {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.categoryLabel {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0.6875rem;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+}
+
+.categoryButton:hover .categoryLabel {
+    transform: translateY(2px);
+    letter-spacing: 0.5px;
+}
+
+.categoryButton.active::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: var(--color-primary);
+    border-radius: var(--radius-md);
+    opacity: 0.3;
+    filter: blur(12px);
+    z-index: -1;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-bottom: 20px;
+    }
+
+    .categoryList {
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
+    }
+
+    .categoryList::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .categoryButton {
+        min-width: 70px;
+        padding: 8px 12px;
+        gap: 3px;
+    }
+
+    .categoryIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .categoryLabel {
+        font-size: 0.625rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        margin-bottom: 14px;
+    }
+
+    .categoryList {
+        gap: 5px;
+        padding: 8px;
+        flex-wrap: wrap;
+    }
+
+    .categoryButton {
+        min-width: 54px;
+        padding: 6px 8px;
+        gap: 2px;
+    }
+
+    .categoryIcon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .categoryLabel {
+        font-size: 0.5rem;
+        letter-spacing: 0px;
+    }
+
+    .categoryButton:hover .categoryLabel {
+        transform: none;
+    }
+
+    .categoryButton.active::before {
+        inset: -2px;
+        filter: blur(6px);
+    }
+}
+
+@media (max-width: 360px) {
+    .sidebar {
+        margin-bottom: 12px;
+    }
+
+    .categoryList {
+        gap: 4px;
+        padding: 6px;
+    }
+
+    .categoryButton {
+        min-width: 50px;
+        padding: 5px 6px;
+        gap: 1px;
+    }
+
+    .categoryIcon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .categoryLabel {
+        font-size: 0.4375rem;
+        letter-spacing: 0px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .categoryButton,
+    .categoryIcon,
+    .categoryLabel {
+        animation: none;
+        transition: none;
+    }
+
+    .categoryButton:hover,
+    .categoryButton.active {
+        transform: none;
+    }
+
+    .categoryButton:hover .categoryIcon,
+    .categoryButton.active .categoryIcon {
+        transform: none;
+    }
+
+    .categoryButton.active::before {
+        animation: none;
+    }
+}

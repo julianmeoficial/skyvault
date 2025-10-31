@@ -1,0 +1,485 @@
+/* ============================================
+   SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--color-background);
+    font-family: var(--font-primary);
+}
+
+/* ============================================
+   FONDO DEGRADADO ANIMADO
+   ============================================ */
+.bgGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 200% 200%;
+    animation: gradientShift 20s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    will-change: background-position;
+}
+
+/* Light theme */
+[data-theme='light'] .bgGradient {
+    background: linear-gradient(
+            135deg,
+            #b3b3b3 0%,
+            #f0f4f8 25%,
+            #e8f1f9 50%,
+            #f0f4f8 75%,
+            #ffffff 100%
+    );
+}
+
+/* Dark theme */
+[data-theme='dark'] .bgGradient {
+    background: linear-gradient(
+            135deg,
+            #0f1419 0%,
+            #1a1d24 25%,
+            #151821 50%,
+            #1a1d24 75%,
+            #0f1419 100%
+    );
+}
+
+/* Minimal theme */
+[data-theme='minimal'] .bgGradient {
+    background: linear-gradient(
+            135deg,
+            #9a9a9a 0%,
+            #f5f5f5 25%,
+            #f0f0f0 50%,
+            #f5f5f5 75%,
+            #fafafa 100%
+    );
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 120px 48px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   TÍTULO
+   ============================================ */
+.title {
+    font-size: clamp(52px, 12vw, 120px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 32px 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1200px;
+}
+
+/* ============================================
+   RAINBOW EFFECT
+   ============================================ */
+.rainbow {
+    display: inline-block;
+    background: linear-gradient(
+            90deg,
+            #ff0080 0%,
+            #ff8c00 14%,
+            #ffd700 28%,
+            #00ff00 42%,
+            #00d4ff 56%,
+            #0080ff 70%,
+            #8000ff 84%,
+            #ff0080 100%
+    );
+    background-size: 200% auto;
+    background-position: 0% center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    will-change: background-position, transform, text-shadow;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateZ(0);
+    text-shadow: 0 0 0 rgba(255, 0, 128, 0);
+}
+
+.rainbow:hover {
+    transform: scale(1.08) translateZ(0);
+    filter: drop-shadow(0 0 25px rgba(255, 0, 128, 0.4));
+}
+
+/* ============================================
+   SUBTÍTULO
+   ============================================ */
+.subtitle {
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin: 0 0 64px 0;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateZ(0);
+}
+
+/* ============================================
+   ESTADÍSTICAS
+   ============================================ */
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(32px, 6vw, 64px);
+    flex-wrap: wrap;
+    margin-top: 48px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, background-color;
+}
+
+[data-theme='light'] .stat:hover {
+    background: rgba(59, 159, 255, 0.08);
+    transform: translateY(-4px);
+}
+
+[data-theme='dark'] .stat:hover {
+    background: rgba(59, 159, 255, 0.12);
+    transform: translateY(-4px);
+}
+
+.number {
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.label {
+    font-size: clamp(12px, 1.3vw, 14px);
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ============================================
+   CONTROLES FLOTANTES
+   ============================================ */
+.controlsLeft,
+.controlsRight {
+    position: fixed;
+    top: 32px;
+    display: flex;
+    z-index: 100;
+    transform: translateZ(0);
+    will-change: opacity;
+}
+
+.controlsLeft {
+    left: 32px;
+}
+
+.controlsRight {
+    right: 32px;
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+.scrollIndicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    animation: bounceDown 2.5s cubic-bezier(0.36, 0, 0.66, 1) infinite;
+}
+
+.scrollDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(59, 159, 255, 0.3);
+    will-change: opacity;
+}
+
+.scrollText {
+    font-size: clamp(11px, 1vw, 13px);
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+@keyframes bounceDown {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(16px);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET LANDSCAPE
+   ============================================ */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .content {
+        padding: 100px 40px;
+    }
+
+    .title {
+        font-size: clamp(48px, 10vw, 100px);
+        margin-bottom: 28px;
+    }
+
+    .subtitle {
+        font-size: clamp(15px, 2.2vw, 18px);
+        margin-bottom: 48px;
+    }
+
+    .stats {
+        gap: 40px;
+    }
+
+    .controlsLeft,
+    .controlsRight {
+        top: 28px;
+    }
+
+    .controlsLeft {
+        left: 28px;
+    }
+
+    .controlsRight {
+        right: 28px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET PORTRAIT
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 90vh;
+    }
+
+    .content {
+        padding: 80px 28px;
+    }
+
+    .title {
+        font-size: clamp(40px, 8vw, 64px);
+        margin-bottom: 24px;
+    }
+
+    .subtitle {
+        font-size: clamp(14px, 2vw, 16px);
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .stats {
+        gap: 24px;
+    }
+
+    .stat {
+        padding: 12px 18px;
+    }
+
+    .number {
+        font-size: clamp(28px, 6vw, 44px);
+    }
+
+    .label {
+        font-size: 12px;
+    }
+
+    .controlsLeft,
+    .controlsRight {
+        top: 20px;
+    }
+
+    .controlsLeft {
+        left: 20px;
+    }
+
+    .controlsRight {
+        right: 20px;
+    }
+
+    .scrollIndicator {
+        bottom: 32px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 85vh;
+    }
+
+    .content {
+        padding: 60px 20px;
+    }
+
+    .title {
+        font-size: clamp(36px, 10vw, 48px);
+        margin-bottom: 20px;
+    }
+
+    .subtitle {
+        font-size: clamp(13px, 1.8vw, 15px);
+        line-height: 1.5;
+        margin-bottom: 32px;
+    }
+
+    .stats {
+        gap: 16px;
+        justify-content: space-around;
+    }
+
+    .stat {
+        padding: 10px 12px;
+    }
+
+    .number {
+        font-size: clamp(24px, 5vw, 36px);
+    }
+
+    .label {
+        font-size: 11px;
+    }
+
+    .controlsLeft,
+    .controlsRight {
+        top: 14px;
+    }
+
+    .controlsLeft {
+        left: 14px;
+    }
+
+    .controlsRight {
+        right: 14px;
+    }
+
+    .scrollIndicator {
+        bottom: 24px;
+    }
+
+    .scrollText {
+        font-size: 10px;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .bgGradient {
+        animation: none;
+    }
+
+    .rainbow {
+        transition: none;
+    }
+
+    .stat {
+        transition: none;
+    }
+
+    .scrollIndicator {
+        animation: none;
+    }
+}
+
+/* ============================================
+   DARK THEME MEJORADO
+   ============================================ */
+[data-theme='dark'] .hero {
+    background: #0a0e14;
+}
+
+[data-theme='dark'] .title {
+    color: #ffffff;
+}
+
+[data-theme='dark'] .subtitle {
+    color: #a8b0ba;
+}
+
+/* ============================================
+   MINIMAL THEME
+   ============================================ */
+[data-theme='minimal'] .hero {
+    background: #ffffff;
+}
+
+[data-theme='minimal'] .title {
+    color: #1a1a1a;
+}
+
+[data-theme='minimal'] .subtitle {
+    color: #5a5a5a;
+}
+
+[data-theme='minimal'] .stat {
+    background: transparent;
+}
+
+[data-theme='minimal'] .stat:hover {
+    background: #f0f0f0 !important;
+}

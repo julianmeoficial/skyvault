@@ -1,0 +1,1 @@
+export { FeaturedNewsCard } from './FeaturedNewsCard';

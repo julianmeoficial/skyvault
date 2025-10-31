@@ -1,0 +1,265 @@
+.cookiesPage {
+    min-height: 100vh;
+    background: var(--color-bg-main);
+    font-family: var(--font-primary);
+}
+
+.topControls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    background: rgba(170, 206, 236, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border-light);
+    z-index: 100;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .topControls {
+    background: rgba(15, 20, 25, 0.95);
+}
+
+[data-theme="minimal"] .topControls {
+    background: rgba(149, 194, 237, 0.5);
+}
+
+.topControls > * {
+    pointer-events: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px var(--spacing-2xl) var(--spacing-3xl);
+}
+
+.header {
+    margin-bottom: var(--spacing-3xl);
+    text-align: center;
+}
+
+.content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.intro {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-3xl);
+    text-align: center;
+}
+
+.intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.whatAreCookies,
+.management,
+.consent {
+    max-width: 900px;
+    margin: 0 auto var(--spacing-3xl);
+    padding: var(--spacing-xl);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--color-primary);
+}
+
+.cookieTypesSection {
+    margin: var(--spacing-3xl) 0;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.whatAreCookies .sectionTitle,
+.management .sectionTitle,
+.consent .sectionTitle {
+    text-align: left;
+    font-size: 1.25rem;
+}
+
+.sectionText {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.cookiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.cookieCard {
+    height: 100%;
+    display: flex;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: var(--spacing-xl);
+    min-height: 220px;
+    width: 100%;
+}
+
+.cardIcon {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(13, 75, 122, 0.9), rgba(13, 75, 122, 0.6));
+    color: #ffffff;
+    border-radius: 16px;
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+            0 8px 32px rgba(13, 75, 122, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.cardIcon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .cardIcon {
+    background: linear-gradient(135deg, rgba(74, 159, 216, 0.9), rgba(74, 159, 216, 0.6));
+    box-shadow:
+            0 8px 32px rgba(74, 159, 216, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="minimal"] .cardIcon {
+    background: linear-gradient(135deg, rgba(90, 108, 125, 0.9), rgba(90, 108, 125, 0.6));
+    box-shadow:
+            0 8px 32px rgba(90, 108, 125, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.cookieCard:hover .cardIcon {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow:
+            0 12px 48px rgba(13, 75, 122, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cardIcon svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    position: relative;
+    z-index: 1;
+}
+
+.cardTitle {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.cardDescription {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.lastUpdated {
+    margin-top: var(--spacing-3xl);
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 100px var(--spacing-md) var(--spacing-xl);
+    }
+
+    .cookiesGrid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+    .cardContent {
+        padding: var(--spacing-lg);
+        min-height: 200px;
+    }
+
+    .whatAreCookies,
+    .management,
+    .consent {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .content {
+        animation: none;
+    }
+
+    .cardIcon {
+        transition: none;
+    }
+
+    .cookieCard:hover .cardIcon {
+        transform: none;
+    }
+}

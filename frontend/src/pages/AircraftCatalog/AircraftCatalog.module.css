@@ -1,0 +1,339 @@
+/* ========== PAGE CONTAINER CON FONDO ADAPTABLE ========== */
+.page {
+    min-height: 100vh;
+    background: linear-gradient(
+            180deg,
+            var(--color-bg-section) 0%,
+            var(--color-bg-main) 50%,
+            var(--color-bg-section) 100%
+    );
+    position: relative;
+    padding-top: 0;
+    transition: background var(--transition-normal);
+}
+
+/* Patrón sutil de fondo - ADAPTABLE */
+.page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+            radial-gradient(circle at 30% 20%, var(--color-accent-lighter) 0%, transparent 60%),
+            radial-gradient(circle at 70% 80%, var(--color-accent-lighter) 0%, transparent 60%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== HERO HEADER MEJORADO ========== */
+.hero {
+    position: relative;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding-top: 80px;
+    z-index: 1;
+}
+
+.heroBackground {
+    position: absolute;
+    inset: 0;
+}
+
+.heroGradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            135deg,
+            var(--color-bg-section) 0%,
+            var(--color-bg-main) 50%,
+            var(--color-bg-section) 100%
+    );
+    opacity: 1;
+    transition: background var(--transition-normal);
+}
+
+/* Sombra superior para contraste con header */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+            180deg,
+            var(--color-primary) 0%,
+            transparent 100%
+    );
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heroPattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+            radial-gradient(circle at 20% 50%, var(--color-accent-light) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, var(--color-accent-lighter) 0%, transparent 40%),
+            radial-gradient(circle at 40% 80%, var(--color-accent-light) 0%, transparent 50%);
+    opacity: 0.15;
+    animation: heroPatternMove 20s ease-in-out infinite;
+}
+
+@keyframes heroPatternMove {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 1;
+    }
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    animation: heroFadeIn 1s ease-out;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heroTitle {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    letter-spacing: -1.8px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow:
+            0 4px 16px rgba(13, 75, 122, 0.6),
+            0 2px 8px rgba(13, 75, 122, 0.4),
+            0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heroSubtitle {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:
+            0 2px 10px rgba(13, 75, 122, 0.5),
+            0 1px 4px rgba(0, 0, 0, 0.3);
+    animation: heroSubtitleSlide 1s ease-out 0.2s backwards;
+}
+
+@keyframes heroSubtitleSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.95;
+        transform: translateY(0);
+    }
+}
+
+.heroHighlight {
+    font-weight: 800;
+    color: var(--color-primary);
+    text-shadow:
+            0 2px 8px rgba(255, 255, 255, 0.8),
+            0 1px 4px rgba(255, 255, 255, 0.6);
+}
+
+/* ========== RESULTS INFO ========== */
+.resultsInfo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.resultsContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.resultsText {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-weight: 600;
+    transition: color var(--transition-normal);
+}
+
+/* ========== MAIN CONTENT ========== */
+.main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   DARK THEME - ESTILO GALAXIA
+======================================== */
+
+[data-theme="dark"] .page::before {
+    background-image:
+            radial-gradient(circle at 30% 20%, rgba(74, 159, 216, 0.15) 0%, transparent 60%),
+            radial-gradient(circle at 70% 80%, rgba(178, 229, 255, 0.1) 0%, transparent 60%);
+    opacity: 0.5;
+}
+
+[data-theme="dark"] .heroPattern {
+    background-image:
+            radial-gradient(circle at 20% 50%, rgba(74, 159, 216, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(178, 229, 255, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 40% 80%, rgba(74, 159, 216, 0.18) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .heroTitle {
+    text-shadow:
+            0 0 30px rgba(178, 229, 255, 0.5),
+            0 4px 16px rgba(74, 159, 216, 0.6),
+            0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .heroSubtitle {
+    text-shadow:
+            0 2px 10px rgba(74, 159, 216, 0.5),
+            0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .heroHighlight {
+    color: var(--color-accent);
+    text-shadow:
+            0 0 20px rgba(178, 229, 255, 0.6),
+            0 2px 8px rgba(178, 229, 255, 0.4);
+}
+
+/* ========================================
+   MINIMAL THEME - COLORES NEUTROS
+======================================== */
+
+[data-theme="minimal"] .page::before {
+    background-image:
+            radial-gradient(circle at 30% 20%, rgba(184, 197, 208, 0.12) 0%, transparent 60%),
+            radial-gradient(circle at 70% 80%, rgba(184, 197, 208, 0.08) 0%, transparent 60%);
+    opacity: 0.4;
+}
+
+[data-theme="minimal"] .heroPattern {
+    background-image:
+            radial-gradient(circle at 20% 50%, rgba(123, 140, 158, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(184, 197, 208, 0.12) 0%, transparent 40%),
+            radial-gradient(circle at 40% 80%, rgba(123, 140, 158, 0.1) 0%, transparent 50%);
+}
+
+[data-theme="minimal"] .heroTitle {
+    text-shadow:
+            0 4px 12px rgba(90, 108, 125, 0.4),
+            0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="minimal"] .heroSubtitle {
+    text-shadow:
+            0 2px 8px rgba(90, 108, 125, 0.3),
+            0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="minimal"] .heroHighlight {
+    color: var(--color-primary);
+    text-shadow:
+            0 2px 6px rgba(255, 255, 255, 0.6),
+            0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .heroTitle {
+        font-size: 58px;
+    }
+
+    .heroSubtitle {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 350px;
+        padding-top: 90px;
+    }
+
+    .heroTitle {
+        font-size: 46px;
+    }
+
+    .heroSubtitle {
+        font-size: 20px;
+    }
+
+    .resultsInfo {
+        padding: 20px 16px 0;
+    }
+
+    .resultsContent {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main {
+        padding: 20px 16px 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 280px;
+        padding-top: 100px;
+    }
+
+    .heroTitle {
+        font-size: 36px;
+        letter-spacing: -1.2px;
+        margin: 0 0 16px;
+    }
+
+    .heroSubtitle {
+        font-size: 18px;
+    }
+}
+
+/* ========== OCULTAR HEADER AL HACER SCROLL (SOLO EN CATALOG) ========== */
+.page :global(.header) {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page :global(.header--scrolled) {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}

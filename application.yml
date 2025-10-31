@@ -1,0 +1,153 @@
+# application.yml - Configuración principal
+spring:
+  application:
+    name: skyvault-backend
+
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/skyvault
+    username: postgres
+    password: ReputeanteA350
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Solo valida, NO modifica ni crea tablas
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+
+  flyway:
+    enabled: false  # Desactivar Flyway
+
+  cache:
+    type: simple
+
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+    date-format: yyyy-MM-dd
+    time-zone: UTC
+
+# Configuración del servidor
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,application/javascript
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+# ✅ ALIAS para CORS (usado por @CrossOrigin en controllers)
+cors:
+  allowed-origins: "*"
+
+# Configuración específica de SkyVault
+skyvault:
+  api:
+    version: 1.0.0
+    base-url: http://localhost:8080
+  data:
+    read-only-mode: true  # Modo solo lectura - NO modifica la base de datos
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:5173
+    allowed-methods: GET,POST,PUT,DELETE,PATCH,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+    max-age: 3600
+  pagination:
+    default-page-size: 20
+    max-page-size: 100
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.skyvault.backend: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{correlationId:-}] %logger{36} - %msg%n"
+
+---
+# Profile específico para desarrollo
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    com.skyvault.backend: DEBUG
+    org.springframework.cache: DEBUG
+
+skyvault:
+  cors:
+    allowed-origins:
+      - http://localhost:5173  # ← PUERTO FIJO FRONTEND
+      - http://localhost:3000  # Por si usas otro puerto
+
+---
+# Profile específico para producción
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  jpa:
+    show-sql: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: WARN
+    com.skyvault.backend: INFO
+
+skyvault:
+  security:
+    rate-limiting:
+      enabled: true
+      requests-per-minute: 60
+      requests-per-hour: 500
+      burst-capacity: 50
+    content-security-policy:
+      report-only: false
+  cors:
+    allowed-origins:
+      - https://skyvault.com
+      - https://www.skyvault.com

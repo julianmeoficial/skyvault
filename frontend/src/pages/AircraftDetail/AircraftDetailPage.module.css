@@ -1,0 +1,177 @@
+/* ========== CONTENEDOR PRINCIPAL ========== */
+
+.pageContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--color-bg-section) 0%, var(--color-bg-white) 100%);
+    transition: background var(--transition-normal);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ========== ESTADOS: LOADING ========== */
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--color-bg-section) 0%, var(--color-bg-white) 100%);
+    transition: background var(--transition-normal);
+}
+
+.loader {
+    text-align: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--color-border-light);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ========== ESTADOS: ERROR ========== */
+
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--color-bg-section) 0%, var(--color-bg-white) 100%);
+    transition: background var(--transition-normal);
+}
+
+.errorContent {
+    text-align: center;
+    max-width: 500px;
+    padding: 2rem;
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-normal);
+}
+
+.errorContent h1 {
+    font-size: 2rem;
+    color: #c0152f;
+    margin-bottom: 1rem;
+}
+
+.errorContent p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.backButton:hover {
+    background: var(--color-primary-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* ========== SECCIONES DE CONTENIDO ========== */
+
+.infoSection {
+    padding: 4rem 0;
+    background: var(--color-bg-white);
+    transition: background var(--transition-normal);
+}
+
+.infoSection h2 {
+    font-size: 2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+    transition: color var(--transition-normal);
+}
+
+.infoSection p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: color var(--transition-normal);
+}
+
+/* ========== DEBUG INFO (temporal) ========== */
+
+.debugInfo {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--color-bg-section);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-normal);
+}
+
+.debugInfo summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.debugInfo pre {
+    background: var(--color-bg-white);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-light);
+}
+
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .errorContent h1 {
+        font-size: 1.5rem;
+    }
+
+    .errorContent p {
+        font-size: 1rem;
+    }
+
+    .infoSection h2 {
+        font-size: 1.5rem;
+    }
+
+    .infoSection p {
+        font-size: 1rem;
+    }
+}

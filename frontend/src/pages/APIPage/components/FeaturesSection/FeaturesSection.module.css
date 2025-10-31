@@ -1,0 +1,353 @@
+.features {
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========== FONDOS ESPACIALES ESTILO APPLE ========== */
+
+.features.dark {
+    background: #000000;
+    background-image:
+            radial-gradient(ellipse at 30% 20%, rgba(80, 30, 130, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 70% 80%, rgba(30, 80, 130, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(40, 40, 60, 0.05) 0%, transparent 100%);
+}
+
+.features.light {
+    background: #c9d6df;
+    background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(145, 160, 175, 0.3) 0%, transparent 50%),
+            radial-gradient(ellipse at 30% 70%, rgba(160, 175, 190, 0.2) 0%, transparent 50%);
+}
+
+.features.minimal {
+    background: #d4d4d4;
+    background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(180, 180, 180, 0.3) 0%, transparent 50%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========== TÍTULOS CON ANIMACIÓN ========== */
+
+.sectionTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    will-change: transform, opacity;
+}
+
+.features.dark .sectionTitle {
+    color: #ffffff;
+}
+
+.features.light .sectionTitle {
+    color: #1d1d1f;
+}
+
+.features.minimal .sectionTitle {
+    color: #2c3e50;
+}
+
+.sectionSubtitle {
+    font-size: clamp(18px, 2vw, 22px);
+    text-align: center;
+    margin-bottom: 80px;
+    opacity: 0.8;
+    will-change: transform, opacity;
+}
+
+.features.dark .sectionSubtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.features.light .sectionSubtitle {
+    color: #86868b;
+}
+
+.features.minimal .sectionSubtitle {
+    color: #5a6c7d;
+}
+
+/* ========== GRID DE CARDS ========== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    perspective: 2000px;
+}
+
+/* ========== FEATURE CARDS CON EFECTO MAGNÉTICO ========== */
+
+.featureCard {
+    padding: 48px 32px;
+    border-radius: 28px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* Optimizaciones críticas para 120fps */
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    contain: layout style paint;
+
+    /* Variables CSS para el glow */
+    --glow-x: 50%;
+    --glow-y: 50%;
+}
+
+.features.dark .featureCard {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.features.light .featureCard {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.features.minimal .featureCard {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(90, 108, 125, 0.15);
+    box-shadow: 0 8px 32px rgba(90, 108, 125, 0.06);
+}
+
+/* Efecto de glow que sigue al cursor */
+.cardGlow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 28px;
+}
+
+.features.dark .featureCard:hover .cardGlow {
+    opacity: 1;
+    background: radial-gradient(
+            600px circle at var(--glow-x) var(--glow-y),
+            rgba(139, 92, 246, 0.15),
+            transparent 40%
+    );
+}
+
+.features.light .featureCard:hover .cardGlow {
+    opacity: 1;
+    background: radial-gradient(
+            600px circle at var(--glow-x) var(--glow-y),
+            rgba(0, 0, 0, 0.03),
+            transparent 40%
+    );
+}
+
+.features.minimal .featureCard:hover .cardGlow {
+    opacity: 1;
+    background: radial-gradient(
+            600px circle at var(--glow-x) var(--glow-y),
+            rgba(90, 108, 125, 0.08),
+            transparent 40%
+    );
+}
+
+/* ========== ICON WRAPPER CON GRADIENTES ========== */
+
+.iconWrapper {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    position: relative;
+    transform: translateZ(20px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featureCard:hover .iconWrapper {
+    transform: translateZ(30px) scale(1.05);
+}
+
+.features.dark .iconWrapper {
+    background: linear-gradient(135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.15) 100%
+    );
+    color: #a78bfa;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+}
+
+.features.light .iconWrapper {
+    background: rgba(0, 0, 0, 0.04);
+    color: #1d1d1f;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.features.minimal .iconWrapper {
+    background: linear-gradient(135deg,
+    rgba(90, 108, 125, 0.08) 0%,
+    rgba(123, 140, 158, 0.08) 100%
+    );
+    color: #5a6c7d;
+    box-shadow: 0 4px 16px rgba(90, 108, 125, 0.1);
+}
+
+/* ========== TEXTOS DE LA CARD ========== */
+
+.featureTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transform: translateZ(10px);
+    position: relative;
+}
+
+.features.dark .featureTitle {
+    color: #ffffff;
+}
+
+.features.light .featureTitle {
+    color: #1d1d1f;
+}
+
+.features.minimal .featureTitle {
+    color: #2c3e50;
+}
+
+.featureDescription {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+    transform: translateZ(5px);
+    position: relative;
+}
+
+.features.dark .featureDescription {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.features.light .featureDescription {
+    color: #6e6e73;
+}
+
+.features.minimal .featureDescription {
+    color: #5a6c7d;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features {
+        padding: 90px 28px; /* Más padding */
+    }
+
+    .sectionTitle {
+        margin-bottom: 20px; /* Espaciado consistente */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 56px; /*  Más espacio antes del grid */
+        padding: 0 12px; /* Margen interno */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 28px; /* Más espacio entre cards */
+    }
+
+    .featureCard {
+        padding: 44px 32px; /*  Más generoso */
+        border-radius: 24px; /*  Border más suave */
+    }
+
+    /* Desactivar efecto 3D en móvil para mejor performance */
+    .featureCard {
+        transform-style: flat !important;
+    }
+
+    .iconWrapper {
+        width: 68px; /* Tamaño intermedio */
+        height: 68px;
+        margin-bottom: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        padding: 70px 24px; /*  Más padding */
+    }
+
+    .sectionSubtitle {
+        margin-bottom: 48px;
+        padding: 0 8px;
+    }
+
+    .grid {
+        gap: 24px; /*  Gap reducido pero generoso */
+    }
+
+    .featureCard {
+        padding: 36px 28px; /*  Más cómodo */
+        border-radius: 22px;
+    }
+
+    .iconWrapper {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+
+    .featureTitle {
+        font-size: 21px; /*  Más grande */
+        margin-bottom: 14px; /*  Más espacio */
+    }
+
+    .featureDescription {
+        font-size: 15px; /*  Más legible */
+        line-height: 1.6; /*  Mejor legibilidad */
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+@media (prefers-reduced-motion: reduce) {
+    .featureCard,
+    .iconWrapper,
+    .cardGlow {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .featureCard {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}

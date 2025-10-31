@@ -1,0 +1,102 @@
+.featuredSection {
+    position: relative;
+    background: #0a0a0a;
+    padding: 8rem 2rem;
+    z-index: 5;
+}
+
+.aboutSection__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.aboutSection__content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aboutSection__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.aboutSection__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.aboutSection__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.aboutSection__feature {
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.aboutSection__feature.liquidGlass {
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(178, 229, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.08) 100%
+    );
+    backdrop-filter: blur(15px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(13, 75, 122, 0.15);
+}
+
+.aboutSection__feature:hover {
+    transform: translateY(-8px);
+}
+
+.aboutSection__feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.aboutSection__feature-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.aboutSection__feature-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .aboutSection {
+        padding: 5rem 1.5rem;
+    }
+
+    .aboutSection__title {
+        font-size: 2.5rem;
+    }
+
+    .aboutSection__text {
+        font-size: 1rem;
+    }
+}

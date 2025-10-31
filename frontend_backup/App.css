@@ -1,0 +1,14 @@
+.App {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}

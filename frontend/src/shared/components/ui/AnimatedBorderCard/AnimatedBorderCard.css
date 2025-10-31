@@ -1,0 +1,141 @@
+.animatedBorderCard {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 16px;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+            12px 12px 24px rgba(13, 75, 122, 0.15),
+            -12px -12px 24px rgba(255, 255, 255, 0.8);
+}
+
+.animatedBorderCard__bg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border-radius: 14px;
+    overflow: hidden;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.animatedBorderCard__icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animatedBorderCard__iconImage {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.animatedBorderCard__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.animatedBorderCard__description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+}
+
+.animatedBorderCard__blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #0D4B7A 0%, #1A5F8F 50%, #0D4B7A 100%);
+    opacity: 0.9;
+    filter: blur(16px);
+    animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+    25% {
+        transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+    50% {
+        transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+    75% {
+        transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+    100% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+}
+
+.animatedBorderCard:hover .animatedBorderCard__blob {
+    filter: blur(20px);
+    opacity: 1;
+    animation: blob-bounce 3s infinite ease;
+}
+
+
+@media (max-width: 767px) {
+    .animatedBorderCard {
+        min-height: auto;
+        height: auto;
+    }
+
+    .animatedBorderCard__bg {
+        padding: 28px 20px;
+        position: relative;
+    }
+
+    .animatedBorderCard__icon {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+
+    .animatedBorderCard__iconImage {
+        width: 64px;
+        height: 64px;
+    }
+
+    .animatedBorderCard__title {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .animatedBorderCard__description {
+        font-size: 13px;
+    }
+}
+

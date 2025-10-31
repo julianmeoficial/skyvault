@@ -1,0 +1,199 @@
+/* ========== SIMILAR AIRCRAFT CARD ========== */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(13, 75, 122, 0.15);
+    overflow: hidden;
+    box-shadow:
+            0 4px 12px rgba(13, 75, 122, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+            0 12px 30px rgba(13, 75, 122, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(13, 75, 122, 0.3);
+}
+
+/* ========== IMAGE ========== */
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(240, 247, 255, 0.5), rgba(255, 255, 255, 0.8));
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .image {
+    transform: scale(1.08);
+}
+
+/* ========== CONTENT ========== */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+}
+
+.manufacturer {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(13, 75, 122, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0d4b7a;
+    line-height: 1.3;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.card:hover .name {
+    color: #32b8c6;
+}
+
+/* ========== SPECS ========== */
+
+.specs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.specLabel {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(13, 75, 122, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.specValue {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0d4b7a;
+}
+
+.specDivider {
+    width: 1px;
+    height: 32px;
+    background: rgba(13, 75, 122, 0.2);
+}
+
+/* ========== BADGE ========== */
+
+.badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(50, 184, 198, 0.1);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #32b8c6;
+    align-self: flex-start;
+}
+
+/* ========== HOVER OVERLAY ========== */
+
+.hoverOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(13, 75, 122, 0) 0%,
+            rgba(13, 75, 122, 0.9) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card:hover .hoverOverlay {
+    opacity: 1;
+}
+
+.viewDetailsText {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.05em;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .content {
+        padding: 1.25rem;
+    }
+
+    .name {
+        font-size: 1.1rem;
+    }
+
+    .specs {
+        gap: 0.75rem;
+    }
+
+    .specValue {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+
+    .specLabel {
+        font-size: 0.65rem;
+    }
+
+    .specValue {
+        font-size: 0.85rem;
+    }
+}
