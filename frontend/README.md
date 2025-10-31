@@ -1,293 +1,313 @@
-# ✈️ SkyVault - Aircraft Catalog & Comparison Platform
+# 🛩️ SkyVault - Aircraft Catalog Frontend
 
-<div align="center">
+[![React](https://img.shields.io/badge/React-19.1.1-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.7-646CFF?logo=vite)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-![SkyVault](https://img.shields.io/badge/SkyVault-Aircraft%20Catalog-0d4b7a?style=for-the-badge)
-![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-7.1.7-646CFF?style=for-the-badge&logo=vite)
-
-**Una plataforma moderna para explorar, comparar y analizar aeronaves comerciales.**
-
-[Demo](#) • [Documentación](./FRONTEND_DOCUMENTATION.md) • [API Docs](#) • [Reportar Bug](#)
-
-</div>
+Modern and elegant web application for exploring commercial aircraft specifications, comparing models, and discovering aviation data.
 
 ---
 
-## 🌟 Características Principales
+## ✨ Features
 
-- 🛩️ **Catálogo Completo** - Explora cientos de aeronaves comerciales con filtros avanzados
-- 🔄 **Comparador Inteligente** - Compara hasta 3 aeronaves lado a lado
-- 📊 **Especificaciones Técnicas** - Información detallada de rendimiento, capacidad y dimensiones
-- 🏢 **Fabricantes y Familias** - Navega por fabricantes (Airbus, Boeing) y familias de aeronaves
-- 🎨 **Temas Personalizables** - Light, Dark y Minimal con diseño Neomorphic y Liquid Glass
-- 📱 **Responsive Design** - Experiencia optimizada en desktop, tablet y móvil
-- ⚡ **Performance Optimizado** - Carga rápida con lazy loading y code splitting
-- 🎭 **Animaciones Fluidas** - Powered by GSAP para transiciones suaves
+- ✈️ **Aircraft Catalog** - Browse through a comprehensive database of commercial aircraft
+- 🔍 **Advanced Filters** - Filter by manufacturer, family, passengers, range, and more
+- 🆚 **Comparison Tool** - Compare 2-3 aircraft side-by-side with detailed specifications
+- 🌓 **Multi-Theme Support** - Light, Dark, and Minimal themes
+- 📱 **Responsive Design** - Optimized for desktop, tablet, and mobile
+- ⚡ **Fast & Optimized** - Built with Vite for blazing-fast performance
+- 🎨 **Modern UI** - Neomorphism and liquid glass design aesthetics
+- 🔄 **Real-time Search** - Instant aircraft search with autocomplete
+- 📊 **Pagination** - Efficient data loading with server-side pagination
+- 🎯 **Type-Safe** - Fully typed with TypeScript
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🚀 Tech Stack
 
 ### Core
-- **React 19.1.1** - Framework UI principal
-- **TypeScript 5.9.3** - Type safety y mejor DX
-- **Vite 7.1.7** - Build tool ultra-rápido
-- **React Router DOM 7.9.4** - Enrutamiento SPA
+- **React** 19.1.1 - UI Framework
+- **TypeScript** ~5.9.3 - Type Safety
+- **Vite** ^7.1.7 - Build Tool & Dev Server
+- **React Router DOM** ^7.9.4 - Routing
 
-### Librerías
-- **GSAP 3.13.0** - Animaciones de alta performance
-- **Axios 1.13.1** - Cliente HTTP para API REST
-- **Heroicons React 2.2.0** - Sistema de iconografía
+### UI & Animations
+- **GSAP** ^3.13.0 - Advanced Animations
+- **Heroicons React** ^2.2.0 - Icon System
+- **CSS Modules** - Scoped Styling
 
-### Estilos
-- **CSS Modules** - Estilos con scope local
-- **CSS Variables** - Design tokens y theming
-- **Neomorphism & Liquid Glass** - Filosofía de diseño
+### Data Fetching
+- **Axios** ^1.13.1 - HTTP Client
+
+### Development Tools
+- **ESLint** ^9.36.0 - Code Linting
+- **TypeScript ESLint** ^8.45.0 - TS-specific Rules
 
 ---
 
-## 🚀 Inicio Rápido
+## 📦 Installation
 
-### Prerrequisitos
+### Prerequisites
+- **Node.js** 18+ 
+- **npm** 9+ or **yarn** 1.22+
 
-- Node.js 18+ y npm 9+
-- Backend API corriendo en `http://localhost:8080` (o configura `VITE_API_BASE_URL`)
+### Install Dependencies
+```bash
+npm install
+```
 
-### Instalación
+### Environment Variables
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080/api/v1
+```
+
+---
+
+## 🔧 Development
+
+Start the development server:
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/skyvault.git
-cd skyvault/frontend
-
-# 2. Instalar dependencias
-npm install
-
-# 3. Configurar variables de entorno
-cp .env.example .env
-# Edita .env con tus configuraciones
-
-# 4. Iniciar servidor de desarrollo
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:5173`
+The app will be available at `http://localhost:5173`
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🏗️ Build
 
-```
-frontend/
-├── src/
-│   ├── app/              # Configuración de la app (layouts, routes)
-│   ├── features/         # Módulos por funcionalidad
-│   │   ├── aircraft/    # Catálogo y detalle de aeronaves
-│   │   ├── comparison/  # Sistema de comparación
-│   │   ├── families/    # Familias de aeronaves
-│   │   ├── news/        # Noticias de aviación
-│   │   └── auth/        # Autenticación (futuro)
-│   ├── pages/            # Componentes de página (routes)
-│   ├── shared/           # Código compartido
-│   │   ├── components/  # UI components reutilizables
-│   │   ├── contexts/    # React Contexts (Theme, etc.)
-│   │   ├── hooks/       # Custom hooks
-│   │   └── utils/       # Utilidades
-│   ├── styles/           # Sistema de diseño y tokens
-│   ├── config/           # Configuraciones
-│   └── lib/              # Setup de librerías externas
-├── public/               # Assets estáticos
-└── FRONTEND_DOCUMENTATION.md  # Documentación detallada
-```
-
-Ver [documentación completa](./FRONTEND_DOCUMENTATION.md) para más detalles.
-
----
-
-## 🎨 Sistema de Diseño
-
-### Temas Disponibles
-
-| Tema | Descripción | Preview |
-|------|-------------|---------|
-| **Light** | Tema claro con paleta azul cielo | ![#D3E9FF](https://via.placeholder.com/15/D3E9FF/000000?text=+) `#D3E9FF` |
-| **Dark** | Tema oscuro con acentos azules | ![#0A1929](https://via.placeholder.com/15/0A1929/000000?text=+) `#0A1929` |
-| **Minimal** | Minimalista monocromático | ![#F8F9FA](https://via.placeholder.com/15/F8F9FA/000000?text=+) `#F8F9FA` |
-
-### Design Tokens
-
-```css
-/* Spacing */
---spacing-xs: 4px → --spacing-3xl: 64px
-
-/* Border Radius */
---radius-sm: 8px → --radius-xl: 20px
-
-/* Typography */
---font-primary: 'Inter', sans-serif
-```
-
----
-
-## 🔌 API Endpoints
-
-El frontend consume los siguientes endpoints del backend:
-
-### Aircraft
-- `GET /api/v1/aircraft` - Lista paginada con filtros
-- `GET /api/v1/aircraft/:id` - Detalle de aeronave
-- `GET /api/v1/aircraft/search` - Búsqueda
-- `GET /api/v1/aircraft/popular` - Aeronaves populares
-- `GET /api/v1/aircraft/:id/similar` - Similares
-
-### Comparison
-- `GET /api/v1/aircraft/compare?ids=1,2,3` - Comparar aeronaves
-- `GET /api/v1/search/suggest` - Sugerencias
-
-### Manufacturers & Families
-- `GET /api/v1/manufacturers/summary` - Lista de fabricantes
-- `GET /api/v1/families` - Familias de aeronaves
-
-Ver [documentación de servicios](./FRONTEND_DOCUMENTATION.md#-consumo-de-api) para más detalles.
-
----
-
-## 📜 Scripts Disponibles
-
-```bash
-npm run dev      # Servidor de desarrollo (puerto 5173)
-npm run build    # Build para producción
-npm run preview  # Preview del build
-npm run lint     # Linting con ESLint
-```
-
----
-
-## 🏗️ Arquitectura
-
-Este proyecto usa **arquitectura feature-based** donde cada feature es autocontenido:
-
-```
-feature/aircraft/
-├── components/    # Componentes específicos
-├── hooks/         # Custom hooks
-├── services/      # API calls
-├── types/         # TypeScript types
-└── utils/         # Utilidades
-```
-
-**Beneficios:**
-- ✅ Escalabilidad
-- ✅ Mantenibilidad
-- ✅ Separación de responsabilidades
-- ✅ Testing más fácil
-
----
-
-## 🧪 Testing (Próximamente)
-
-```bash
-npm run test        # Tests unitarios
-npm run test:e2e    # Tests E2E
-npm run test:coverage  # Cobertura de tests
-```
-
----
-
-## 🚀 Deployment
-
-### Build para Producción
+Build for production:
 
 ```bash
 npm run build
 ```
 
-Los archivos optimizados estarán en `/dist`
-
-### Variables de Entorno de Producción
-
-```env
-VITE_API_BASE_URL=https://api.skyvault.com/api/v1
-```
-
-### Deploy en Vercel/Netlify
+Preview production build:
 
 ```bash
-# Vercel
-vercel --prod
-
-# Netlify
-netlify deploy --prod --dir=dist
+npm run preview
 ```
 
 ---
 
-## 🗺️ Roadmap
+## 📂 Project Structure
 
-### v1.0 (Actual)
-- ✅ Catálogo de aeronaves con filtros
-- ✅ Comparador de aeronaves
-- ✅ Sistema de temas
-- ✅ Responsive design
+```
+frontend/
+├── src/
+│   ├── app/                    # App configuration (layouts, routes)
+│   ├── features/              # Feature modules (aircraft, comparison, etc.)
+│   │   ├── aircraft/          # Aircraft catalog feature
+│   │   ├── comparison/        # Comparison feature
+│   │   ├── families/          # Aircraft families
+│   │   ├── news/              # News system
+│   │   └── auth/              # Authentication (future)
+│   ├── pages/                 # Route components
+│   ├── shared/                # Shared components, hooks, utils
+│   │   ├── components/        # Reusable components
+│   │   ├── contexts/          # React contexts
+│   │   ├── hooks/             # Custom hooks
+│   │   ├── types/             # Shared TypeScript types
+│   │   └── utils/             # Utility functions
+│   ├── styles/                # Global styles & design tokens
+│   │   ├── variables.css      # CSS Variables (themes)
+│   │   └── global.css         # Global styles
+│   ├── config/                # Configuration files
+│   ├── lib/                   # Third-party library configs
+│   └── assets/                # Static assets
+├── public/                    # Public static files
+└── FRONTEND_DOCUMENTATION.md  # Complete technical documentation
+```
 
-### v1.1 (Próximo)
-- [ ] Autenticación de usuarios
-- [ ] Favoritos y listas personalizadas
-- [ ] Compartir comparaciones
-- [ ] PWA support
-
-### v2.0 (Futuro)
-- [ ] Sistema de noticias
-- [ ] Comentarios y reviews
-- [ ] API pública para developers
-- [ ] Internacionalización (i18n)
-
----
-
-## 🤝 Contribución
-
-Las contribuciones son bienvenidas! Por favor:
-
-1. Fork el proyecto
-2. Crea una rama (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add: amazing feature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+> **⚠️ Note:** Please ignore the `frontend_backup/` folder if present. It contains an old architecture that is no longer used and was kept only for reference to track changes. It's irrelevant for the current implementation.
 
 ---
 
-## 👨‍💻 Autor
+## 📖 Documentation
 
-**Estudiante de Ingeniería de Software** (5/10 semestres)
+For complete technical documentation, architecture details, and API consumption guide, see:
 
-- 💼 Stack: Frontend, Java, Swift, Kotlin, C++, Cangjie
-- 🎨 Diseño: Neomorphism, Liquid Glass
-- 🛠️ Herramientas: Figma, Notion
+**[📚 FRONTEND_DOCUMENTATION.md](./FRONTEND_DOCUMENTATION.md)**
+
+Includes:
+- Complete architecture breakdown
+- Feature-based structure explanation
+- API endpoints and consumption
+- Design system and theming
+- Type definitions
+- Best practices
 
 ---
 
-## 🙏 Agradecimientos
+## 🎨 Design System
 
-- [React](https://react.dev/) - Framework UI
-- [Vite](https://vitejs.dev/) - Build tool
-- [GSAP](https://greensock.com/gsap/) - Animaciones
-- [Heroicons](https://heroicons.com/) - Iconografía
-- Comunidad de desarrolladores ✨
+### Themes
+- **Light Theme** - Default bright theme with blue palette
+- **Dark Theme** - Dark mode with adapted colors
+- **Minimal Theme** - Monochromatic elegant design
+
+### Design Tokens
+```css
+/* Spacing */
+--spacing-xs: 4px
+--spacing-sm: 8px
+--spacing-md: 16px
+--spacing-lg: 24px
+--spacing-xl: 32px
+
+/* Colors (Light Theme) */
+--color-primary: #0d4b7a
+--color-bg-main: #D3E9FF
+--color-text-primary: #1d1d1f
+
+/* Shadows */
+--shadow-sm: 0 2px 8px rgba(13, 75, 122, 0.06)
+--shadow-card: 0 4px 24px rgba(13, 75, 122, 0.12)
+```
+
+---
+
+## 🛣️ Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home page |
+| `/aircraft` | Aircraft catalog |
+| `/aircraft/:identifier` | Aircraft detail page |
+| `/compare-select` | Comparison selector |
+| `/compare` | Comparison view |
+| `/families` | Aircraft families |
+| `/manufacturers` | Manufacturers list |
+| `/news` | Aviation news |
+| `/about` | About SkyVault |
+| `/api` | API documentation |
+
+---
+
+## 🔌 API Integration
+
+The frontend consumes a REST API with the following base URL:
+
+```
+http://localhost:8080/api/v1
+```
+
+### Main Endpoints Used
+
+```typescript
+// Aircraft
+GET /aircraft                    # Paginated catalog
+GET /aircraft/:id                # Aircraft detail
+GET /aircraft/search            # Search aircraft
+GET /aircraft/popular           # Popular aircraft
+GET /aircraft/featured          # Featured aircraft
+GET /aircraft/:id/similar       # Similar aircraft
+GET /aircraft/compare           # Compare aircraft
+
+// Manufacturers & Families
+GET /manufacturers/summary      # Manufacturers list
+GET /families                   # Families list
+
+// Search
+GET /search/suggest             # Search suggestions
+```
+
+For complete API documentation, see [FRONTEND_DOCUMENTATION.md](./FRONTEND_DOCUMENTATION.md)
+
+---
+
+## 🧪 Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server (port 5173)
+
+# Build
+npm run build        # Build for production
+
+# Linting
+npm run lint         # Run ESLint
+
+# Preview
+npm run preview      # Preview production build
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: add some amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Commit Convention
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting, etc.)
+- `refactor:` - Code refactoring
+- `perf:` - Performance improvements
+- `test:` - Adding tests
+- `chore:` - Maintenance tasks
+
+---
+
+## 🐛 Known Issues
+
+- [ ] None at the moment
+
+Report issues at: [GitHub Issues](https://github.com/YOUR_USERNAME/skyvault-frontend/issues)
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**SkyVault Development Team**
+- OUTTARY (Julián Espitia y Mónica Vellojin) - Software Engineering Students (5/10 semesters)
+- Specialization: Frontend, Java, JavaScript, TypeScript, Swift, Kotlin, C++, Cangjie
+- Design: Neomorphism, Liquid Glass aesthetics
+- Tools: Figma, Notion, Linear, Rave, Spline, Blender, Framer, After Effects
+
+---
+
+## 🌟 Acknowledgments
+
+- React team for the amazing framework
+- Vite team for the incredible build tool
+- GSAP for powerful animations
+- All contributors and supporters
+
+---
+
+## 📞 Support
+
+For questions, issues, or suggestions:
+
+- 📧 Email: julianmeoficial@outlook.com
 
 ---
 
 <div align="center">
 
-**⭐ Si te gusta este proyecto, dale una estrella!**
+**⭐ If you like this project, please give it a star! ⭐**
 
-[⬆ Volver arriba](#-skyvault---aircraft-catalog--comparison-platform)
+Made with ❤️ and ✈️
 
 </div>

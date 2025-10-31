@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
@@ -16,6 +17,9 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Editor directories and files
 .vscode/*
@@ -27,3 +31,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Old/Backup folders (not used)
+frontend_backup/
+
+# Build output
+build
+.cache
+
+# Testing
+coverage
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
